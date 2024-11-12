@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="card-action">
-            <a href="{$link->getModuleLink('worldlineop', 'storedcards', ['delete' => 1, 'token' => $token, 'id_token' => $stored_card.id])}">
+            <a href="{$link->getModuleLink('cawlop', 'storedcards', ['delete' => 1, 'token' => $token, 'id_token' => $stored_card.id])}">
               <span class="material-icons">delete</span>
               {l s='Delete' mod='cawlop'}
             </a>
