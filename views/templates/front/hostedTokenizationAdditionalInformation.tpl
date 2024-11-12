@@ -14,19 +14,19 @@
 
 <div class="js-worldlineop-iframe-container">
   <div class="alert alert-info js-worldlineop-1click-surcharge" style="display:none">
-    <p>{l s='Please note that a surcharge will be applied to the total amount:' mod='worldlineop'}</p>
+    <p>{l s='Please note that a surcharge will be applied to the total amount:' mod='cawlop'}</p>
     <ul>
       <li>
-        {l s='Initial total:' mod='worldlineop'}
+        {l s='Initial total:' mod='cawlop'}
         <span class="js-wordlineop-surcharge-initial-amount"></span>
       </li>
       <li>
-        {l s='Surcharge amount:' mod='worldlineop'}
+        {l s='Surcharge amount:' mod='cawlop'}
         <span class="js-wordlineop-surcharge-amount"></span>
       </li>
       <li>
         <b>
-          {l s='Total amount with surcharge:' mod='worldlineop'}
+          {l s='Total amount with surcharge:' mod='cawlop'}
           <span class="js-wordlineop-surcharge-total-amount"></span>
         </b>
       </li>
@@ -35,14 +35,14 @@
   <div id="js-worldlineop-iframe" class="js-worldlineop-htp worldlineop-htp"></div>
 
   <div class="js-worldlineop-generic-error alert alert-danger" style="display: none">
-    {l s='An error occurred while processing the payment.' mod='worldlineop'}
-    <a href="javascript:window.location.reload()">{l s='Please click here' mod='worldlineop'}</a>
-    {l s='to refresh this page or contact our Customer Service' mod='worldlineop'}
+    {l s='An error occurred while processing the payment.' mod='cawlop'}
+    <a href="javascript:window.location.reload()">{l s='Please click here' mod='cawlop'}</a>
+    {l s='to refresh this page or contact our Customer Service' mod='cawlop'}
   </div>
   <div class="js-worldlineop-error alert alert-danger" style="display: none">
     <span></span>
-    <a href="javascript:window.location.reload()">{l s='Please click here' mod='worldlineop'}</a>
-    {l s='to refresh this page or contact our Customer Service' mod='worldlineop'}
+    <a href="javascript:window.location.reload()">{l s='Please click here' mod='cawlop'}</a>
+    {l s='to refresh this page or contact our Customer Service' mod='cawlop'}
   </div>
 </div>
 

@@ -16,11 +16,11 @@ if (!defined('_PS_VERSION_')) {
 }
 
 /**
- * Class WorldlineopCronPendingModuleFrontController
+ * Class CawlopCronPendingModuleFrontController
  */
-class WorldlineopCronPendingModuleFrontController extends ModuleFrontController
+class CawlopCronPendingModuleFrontController extends ModuleFrontController
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     /** @var bool */
@@ -30,7 +30,7 @@ class WorldlineopCronPendingModuleFrontController extends ModuleFrontController
     private $idOrder;
 
     /**
-     * WorldlineopCronPendingModuleFrontController constructor.
+     * CawlopCronPendingModuleFrontController constructor.
      */
     public function __construct()
     {
@@ -73,7 +73,7 @@ class WorldlineopCronPendingModuleFrontController extends ModuleFrontController
         }
         $shops = Shop::getShops(false, null, true);
         /** @var \WorldlineOP\PrestaShop\Configuration\Loader\SettingsLoader $settingsLoader */
-        $settingsLoader = $this->module->getService('worldlineop.settings.loader');
+        $settingsLoader = $this->module->getService('cawlop.settings.loader');
         $shopSettings = [];
         $pendingStateIds = [];
         foreach ($shops as $idShop) {
@@ -104,7 +104,7 @@ class WorldlineopCronPendingModuleFrontController extends ModuleFrontController
             exit;
         }
         /** @var \OnlinePayments\Sdk\Merchant\MerchantClient $merchantClient */
-        $merchantClient = $this->module->getService('worldlineop.sdk.client');
+        $merchantClient = $this->module->getService('cawlop.sdk.client');
         /** @var \WorldlineOP\PrestaShop\Repository\TransactionRepository $transactionRepository */
         $rows = array_map(
             function ($array) {

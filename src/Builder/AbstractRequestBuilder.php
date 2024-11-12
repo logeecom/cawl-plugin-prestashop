@@ -34,7 +34,7 @@ use OnlinePayments\Sdk\Domain\Shipping;
 use OnlinePayments\Sdk\Domain\SurchargeSpecificInput;
 use RandomLib\Factory;
 use SecurityLib\Strength;
-use Worldlineop;
+use Cawlop;
 use WorldlineOP\PrestaShop\Configuration\Entity\PaymentMethodsSettings;
 use WorldlineOP\PrestaShop\Configuration\Entity\PaymentSettings;
 use WorldlineOP\PrestaShop\Configuration\Entity\Settings;
@@ -73,7 +73,7 @@ abstract class AbstractRequestBuilder implements PaymentRequestBuilderInterface
     /** @var Settings */
     protected $settings;
 
-    /** @var Worldlineop */
+    /** @var Cawlop */
     protected $module;
 
     /** @var Context */
@@ -95,13 +95,13 @@ abstract class AbstractRequestBuilder implements PaymentRequestBuilderInterface
      * AbstractRequestBuilder constructor.
      *
      * @param Settings $settings
-     * @param Worldlineop $module
+     * @param Cawlop $module
      * @param Context $context
      */
     public function __construct(
-        Settings $settings,
-        Worldlineop $module,
-        Context $context,
+        Settings              $settings,
+        Cawlop                $module,
+        Context               $context,
         ShoppingCartPresenter $shoppingCartPresenter
     ) {
         $this->settings = $settings;

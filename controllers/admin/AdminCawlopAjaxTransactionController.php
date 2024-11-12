@@ -22,11 +22,11 @@ use OnlinePayments\Sdk\ResponseException;
 use WorldlineOP\PrestaShop\Utils\Decimal;
 
 /**
- * Class AdminWorldlineopAjaxTransactionController
+ * Class AdminCawlopAjaxTransactionController
  */
-class AdminWorldlineopAjaxTransactionController extends ModuleAdminController
+class AdminCawlopAjaxTransactionController extends ModuleAdminController
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     /**
@@ -38,7 +38,7 @@ class AdminWorldlineopAjaxTransactionController extends ModuleAdminController
         if (!$this->access('edit')) {
             // @formatter:off
             $this->context->smarty->assign([
-                'worldlineopAjaxTransactionError' => $this->module->l('You do not have permission to capture funds.', 'AdminWorldlineopAjaxTransactionController'),
+                'worldlineopAjaxTransactionError' => $this->module->l('You do not have permission to capture funds.', 'AdminCawlopAjaxTransactionController'),
             ]);
             // @formatter:on
             exit(json_encode([
@@ -47,7 +47,7 @@ class AdminWorldlineopAjaxTransactionController extends ModuleAdminController
         }
 
         /** @var \OnlinePayments\Sdk\Merchant\MerchantClient $merchantClient */
-        $merchantClient = $this->module->getService('worldlineop.sdk.client');
+        $merchantClient = $this->module->getService('cawlop.sdk.client');
 
         $pow = \WorldlineOP\PrestaShop\Utils\Tools::getCurrencyDecimalByIso($transaction['currencyCode']);
         $capturePaymentRequest = new CapturePaymentRequest();
@@ -67,7 +67,7 @@ class AdminWorldlineopAjaxTransactionController extends ModuleAdminController
                 $this->context->smarty->assign('captureConfirmation', true);
             } else {
                 // @formatter:off
-                $this->context->smarty->assign('worldlineopAjaxTransactionError', $this->module->l('Capture of funds failed with status ', 'AdminWorldlineopAjaxTransactionController') . $captureResponse->getStatus());
+                $this->context->smarty->assign('worldlineopAjaxTransactionError', $this->module->l('Capture of funds failed with status ', 'AdminCawlopAjaxTransactionController') . $captureResponse->getStatus());
                 // @formatter:on
             }
         }
@@ -86,7 +86,7 @@ class AdminWorldlineopAjaxTransactionController extends ModuleAdminController
         if (!$this->access('edit')) {
             // @formatter:off
             $this->context->smarty->assign([
-                'worldlineopAjaxTransactionError' => $this->module->l('You do not have permission to refund funds.', 'AdminWorldlineopAjaxTransactionController'),
+                'worldlineopAjaxTransactionError' => $this->module->l('You do not have permission to refund funds.', 'AdminCawlopAjaxTransactionController'),
             ]);
             // @formatter:on
             exit(json_encode([
@@ -94,7 +94,7 @@ class AdminWorldlineopAjaxTransactionController extends ModuleAdminController
             ]));
         }
         /** @var \OnlinePayments\Sdk\Merchant\MerchantClient $merchantClient */
-        $merchantClient = $this->module->getService('worldlineop.sdk.client');
+        $merchantClient = $this->module->getService('cawlop.sdk.client');
 
         $refundRequest = new RefundRequest();
         $amountOfMoney = new AmountOfMoney();
@@ -116,7 +116,7 @@ class AdminWorldlineopAjaxTransactionController extends ModuleAdminController
                 $this->context->smarty->assign('refundConfirmation', true);
             } else {
                 // @formatter:off
-                $this->context->smarty->assign('worldlineopAjaxTransactionError', $this->module->l('Refund of funds failed with status ', 'AdminWorldlineopAjaxTransactionController') . $refundResponse->getStatus());
+                $this->context->smarty->assign('worldlineopAjaxTransactionError', $this->module->l('Refund of funds failed with status ', 'AdminCawlopAjaxTransactionController') . $refundResponse->getStatus());
                 // @formatter:on
             }
         }
@@ -135,7 +135,7 @@ class AdminWorldlineopAjaxTransactionController extends ModuleAdminController
         if (!$this->access('edit')) {
             // @formatter:off
             $this->context->smarty->assign([
-                'worldlineopAjaxTransactionError' => $this->module->l('You do not have permission to cancel transactions.', 'AdminWorldlineopAjaxTransactionController'),
+                'worldlineopAjaxTransactionError' => $this->module->l('You do not have permission to cancel transactions.', 'AdminCawlopAjaxTransactionController'),
             ]);
             // @formatter:on
             exit(json_encode([
@@ -144,7 +144,7 @@ class AdminWorldlineopAjaxTransactionController extends ModuleAdminController
         }
 
         /** @var \OnlinePayments\Sdk\Merchant\MerchantClient $merchantClient */
-        $merchantClient = $this->module->getService('worldlineop.sdk.client');
+        $merchantClient = $this->module->getService('cawlop.sdk.client');
 
         try {
             $cancelResponse = $merchantClient->payments()->cancelPayment($transaction['id']);

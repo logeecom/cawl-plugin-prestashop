@@ -19,15 +19,15 @@ namespace WorldlineOP\PrestaShop\Configuration\Validation;
  */
 abstract class AbstractValidationData implements ValidationDataInterface
 {
-    /** @var \Worldlineop */
+    /** @var \Cawlop */
     protected $module;
 
     /**
      * AbstractValidationData constructor.
      *
-     * @param \Worldlineop $module
+     * @param \Cawlop $module
      */
-    public function __construct(\Worldlineop $module)
+    public function __construct(\Cawlop $module)
     {
         $this->module = $module;
     }

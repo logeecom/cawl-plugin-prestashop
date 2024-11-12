@@ -17,11 +17,11 @@
     <div id="worldlineop-configuration">
       <div class="worldlineop-information">
         <i class="icon icon-info-circle"></i>
-        {l s='Worldline Online Payments module' mod='worldlineop'} v{$data.extra.moduleVersion|escape:'html':'UTF-8'} -
+        {l s='Cawl Online Payments module' mod='cawlop'} v{$data.extra.moduleVersion|escape:'html':'UTF-8'} -
         <a data-toggle="modal"
            data-target="#worldlineop-modal-whatsnew"
            href="#">
-          {l s='What\'s new?' mod='worldlineop'}
+          {l s='What\'s new?' mod='cawlop'}
         </a>
       </div>
       {include file="./_header.tpl"}
@@ -30,37 +30,37 @@
           <li {if $data.activeTab == 'account'}class="active"{/if}>
             <a href="#account" data-toggle="tab">
               <i class="icon icon-user"></i>
-              {l s='My account' mod='worldlineop'}
+              {l s='My account' mod='cawlop'}
             </a>
           </li>
           <li class="js-tab-advanced{if $data.activeTab == 'advancedSettings'} active{/if}">
             <a href="#advanced-settings" data-toggle="tab">
               <i class="icon icon-cogs"></i>
-              {l s='Advanced Settings' mod='worldlineop'}
+              {l s='Advanced Settings' mod='cawlop'}
             </a>
           </li>
           <li class="js-tab-advanced{if $data.activeTab == 'paymentMethods'} active{/if}">
             <a href="#payment-methods" data-toggle="tab">
               <i class="icon icon-credit-card"></i>
-              {l s='Payment Methods' mod='worldlineop'}
+              {l s='Payment Methods' mod='cawlop'}
             </a>
           </li>
           <li class="js-worldlineop-advanced-settings-block worldlineop-advanced-settings-block">
             <div class="js-worldlineop-advanced-settings-switch">
-              {l s='Show advanced settings' mod='worldlineop'}
+              {l s='Show advanced settings' mod='cawlop'}
               <span class="switch prestashop-switch fixed-width-sm">
                 <input type="radio"
                        value="1"
                        name="worldlineopAdvancedSettings[advancedSettingsEnabled]"
                        id="worldlineopAdvancedSettings_advancedSettingsEnabled_on"
                        {if $data.extra.advancedSettingsEnabled === 'true'}checked="checked"{/if}>
-                <label for="worldlineopAdvancedSettings_advancedSettingsEnabled_on">{l s='Yes' mod='worldlineop'}</label>
+                <label for="worldlineopAdvancedSettings_advancedSettingsEnabled_on">{l s='Yes' mod='cawlop'}</label>
                 <input type="radio"
                        value="0"
                        name="worldlineopAdvancedSettings[advancedSettingsEnabled]"
                        id="worldlineopAdvancedSettings_advancedSettingsEnabled_off"
                        {if $data.extra.advancedSettingsEnabled != 'true'}checked="checked"{/if}>
-                <label for="worldlineopAdvancedSettings_advancedSettingsEnabled_off">{l s='No' mod='worldlineop'}</label>
+                <label for="worldlineopAdvancedSettings_advancedSettingsEnabled_off">{l s='No' mod='cawlop'}</label>
                 <a class="slide-button btn"></a>
               </span>
             </div>

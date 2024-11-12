@@ -29,7 +29,7 @@ use WorldlineOP\PrestaShop\Utils\TabManager;
  */
 class Installer
 {
-    /** @var \Worldlineop */
+    /** @var \Cawlop */
     private $module;
 
     /** @var TabManager */
@@ -56,7 +56,7 @@ class Installer
     /**
      * Installer constructor.
      *
-     * @param \Worldlineop $module
+     * @param \Cawlop $module
      * @param TabManager $tabManager
      * @param OrderStatusManager $orderStatusManager
      * @param AccountSettingsUpdater $accountSettingsUpdater
@@ -66,14 +66,14 @@ class Installer
      * @param LoggerFactory $loggerFactory
      */
     public function __construct(
-        \Worldlineop $module,
-        TabManager $tabManager,
-        OrderStatusManager $orderStatusManager,
-        AccountSettingsUpdater $accountSettingsUpdater,
-        AdvancedSettingsUpdater $advancedSettingsUpdater,
+        \Cawlop                       $module,
+        TabManager                    $tabManager,
+        OrderStatusManager            $orderStatusManager,
+        AccountSettingsUpdater        $accountSettingsUpdater,
+        AdvancedSettingsUpdater       $advancedSettingsUpdater,
         PaymentMethodsSettingsUpdater $paymentMethodsSettingsUpdater,
-        $psVersion,
-        LoggerFactory $loggerFactory
+                                      $psVersion,
+        LoggerFactory                 $loggerFactory
     ) {
         $this->module = $module;
         $this->tabManager = $tabManager;

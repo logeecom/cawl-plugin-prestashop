@@ -20,16 +20,16 @@ use PrestaShop\Decimal\Number;
 use WorldlineOP\PrestaShop\Repository\TokenRepository;
 
 /**
- * Class WorldlineopPaymentModuleFrontController
+ * Class CawlopPaymentModuleFrontController
  */
-class WorldlineopPaymentModuleFrontController extends ModuleFrontController
+class CawlopPaymentModuleFrontController extends ModuleFrontController
 {
     const MERCHANT_ACTION_REDIRECT = 'REDIRECT';
 
     const TOKEN_STATUS_CREATED = 'CREATED';
     const TOKEN_STATUS_UPDATED = 'UPDATED';
 
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     /** @var \Monolog\Logger */
@@ -41,7 +41,7 @@ class WorldlineopPaymentModuleFrontController extends ModuleFrontController
     public function displayAjaxCreatePayment()
     {
         /** @var \WorldlineOP\PrestaShop\Logger\LoggerFactory $loggerFactory */
-        $loggerFactory = $this->module->getService('worldlineop.logger.factory');
+        $loggerFactory = $this->module->getService('cawlop.logger.factory');
         $this->logger = $loggerFactory->setChannel('CreatePayment');
 
         $cart = $this->context->cart;
@@ -70,7 +70,7 @@ class WorldlineopPaymentModuleFrontController extends ModuleFrontController
         }
 
         /** @var \OnlinePayments\Sdk\Merchant\MerchantClient $merchantClient */
-        $merchantClient = $this->module->getService('worldlineop.sdk.client');
+        $merchantClient = $this->module->getService('cawlop.sdk.client');
         try {
             $hostedTokenizationResponse = $merchantClient->hostedTokenization()
                 ->getHostedTokenization($hostedTokenizationId);
@@ -97,7 +97,7 @@ class WorldlineopPaymentModuleFrontController extends ModuleFrontController
             )
         ) {
             /** @var TokenRepository $tokenRepository */
-            $tokenRepository = $this->module->getService('worldlineop.repository.token');
+            $tokenRepository = $this->module->getService('cawlop.repository.token');
             $token = $tokenRepository->findByCustomerIdToken($this->context->customer->id, $tokenId);
             if (false === $token) {
                 $token = new WorldlineopToken();
@@ -114,7 +114,7 @@ class WorldlineopPaymentModuleFrontController extends ModuleFrontController
         }
 
         /** @var \WorldlineOP\PrestaShop\Builder\PaymentRequestDirector $hostedCheckoutDirector */
-        $hostedCheckoutDirector = $this->module->getService('worldlineop.payment_request.director');
+        $hostedCheckoutDirector = $this->module->getService('cawlop.payment_request.director');
         try {
             $paymentRequest = $hostedCheckoutDirector->buildPaymentRequest($tokenId, $ccForm);
             $this->module->logger->debug('IframeHostedTokenizationRequest', ['json' => json_decode($paymentRequest->toJson(), true)]);
@@ -140,7 +140,7 @@ class WorldlineopPaymentModuleFrontController extends ModuleFrontController
             // @formatter:on
         }
         /** @var \WorldlineOP\PrestaShop\Repository\CreatedPaymentRepository $createdPaymentRepository */
-        $createdPaymentRepository = $this->module->getService('worldlineop.repository.created_payment');
+        $createdPaymentRepository = $this->module->getService('cawlop.repository.created_payment');
         $this->logger->debug('Payment Response', ['response' => json_decode($paymentResponse->toJson(), true)]);
         $createdPayment = new CreatedPayment();
         $createdPayment->id_cart = (int) $cart->id;

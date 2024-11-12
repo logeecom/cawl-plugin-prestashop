@@ -20,11 +20,11 @@ use WorldlineOP\PrestaShop\Configuration\Entity\PaymentSettings;
 use WorldlineOP\PrestaShop\Utils\Decimal;
 
 /**
- * Class WorldlineopCronCaptureModuleFrontController
+ * Class CawlopCronCaptureModuleFrontController
  */
-class WorldlineopCronCaptureModuleFrontController extends ModuleFrontController
+class CawlopCronCaptureModuleFrontController extends ModuleFrontController
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     /** @var bool */
@@ -34,7 +34,7 @@ class WorldlineopCronCaptureModuleFrontController extends ModuleFrontController
     private $idOrder;
 
     /**
-     * WorldlineopCronCaptureModuleFrontController constructor.
+     * CawlopCronCaptureModuleFrontController constructor.
      */
     public function __construct()
     {
@@ -77,7 +77,7 @@ class WorldlineopCronCaptureModuleFrontController extends ModuleFrontController
             printf('<pre>');
         }
         /** @var \WorldlineOP\PrestaShop\Configuration\Loader\SettingsLoader $settingsLoader */
-        $settingsLoader = $this->module->getService('worldlineop.settings.loader');
+        $settingsLoader = $this->module->getService('cawlop.settings.loader');
         $shopsSettings = [];
         $restrictOSIds1 = [Configuration::getGlobalValue('PS_OS_CANCELED')];
         $restrictOSIds2 = [Configuration::getGlobalValue('WOP_AWAITING_CAPTURE_STATUS_ID')];
@@ -124,9 +124,9 @@ class WorldlineopCronCaptureModuleFrontController extends ModuleFrontController
             exit;
         }
         /** @var \OnlinePayments\Sdk\Merchant\MerchantClient $merchantClient */
-        $merchantClient = $this->module->getService('worldlineop.sdk.client');
+        $merchantClient = $this->module->getService('cawlop.sdk.client');
         /** @var \WorldlineOP\PrestaShop\Repository\TransactionRepository $transactionRepository */
-        $transactionRepository = $this->module->getService('worldlineop.repository.transaction');
+        $transactionRepository = $this->module->getService('cawlop.repository.transaction');
         $rows = array_map(
             function ($array) {
                 return $array['id_order'];

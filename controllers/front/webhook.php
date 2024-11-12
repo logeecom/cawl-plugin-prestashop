@@ -21,11 +21,11 @@ use WorldlineOP\PrestaShop\Configuration\Entity\Settings;
 use WorldlineOP\PrestaShop\Utils\Tools;
 
 /**
- * Class WorldlineopWebhookModuleFrontController
+ * Class CawlopWebhookModuleFrontController
  */
-class WorldlineopWebhookModuleFrontController extends ModuleFrontController
+class CawlopWebhookModuleFrontController extends ModuleFrontController
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     /** @var \Monolog\Logger */
@@ -37,7 +37,7 @@ class WorldlineopWebhookModuleFrontController extends ModuleFrontController
     public function postProcess()
     {
         /** @var \WorldlineOP\PrestaShop\Logger\LoggerFactory $loggerFactory */
-        $loggerFactory = $this->module->getService('worldlineop.logger.factory');
+        $loggerFactory = $this->module->getService('cawlop.logger.factory');
         $this->logger = $loggerFactory->setChannel('Webhooks');
         $data = \Tools::file_get_contents('php://input');
         switch ($_SERVER['REQUEST_METHOD']) {
@@ -57,7 +57,7 @@ class WorldlineopWebhookModuleFrontController extends ModuleFrontController
     public function postRequest($data)
     {
         /** @var Settings $settings */
-        $settings = $this->module->getService('worldlineop.settings');
+        $settings = $this->module->getService('cawlop.settings');
 
         $secretKeyStore = new InMemorySecretKeyStore([$settings->credentials->webhooksKey => $settings->credentials->webhooksSecret]);
         $helper = new WebhooksHelper($secretKeyStore);
@@ -73,12 +73,12 @@ class WorldlineopWebhookModuleFrontController extends ModuleFrontController
         $this->respondOK();
 
         /** @var \WorldlineOP\PrestaShop\Presenter\WebhookEventPresenter $eventPresenter */
-        $eventPresenter = $this->module->getService('worldlineop.event.presenter');
+        $eventPresenter = $this->module->getService('cawlop.event.presenter');
         try {
             $eventPresenter->handlePending($event, $settings);
             $presentedData = $eventPresenter->present($event, $this->context->shop->id);
             /** @var \WorldlineOP\PrestaShop\Processor\TransactionResponseProcessor $transactionResponseProcessor */
-            $transactionResponseProcessor = $this->module->getService('worldlineop.processor.transaction');
+            $transactionResponseProcessor = $this->module->getService('cawlop.processor.transaction');
             $transactionResponseProcessor->process($presentedData);
         } catch (Exception $e) {
             $this->logger->error(

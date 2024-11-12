@@ -14,7 +14,7 @@
 
 <div id="worldlineop-admin-order" class="panel">
   <div class="panel-heading">
-    {l s='Worldline Online Payments' mod='worldlineop'}
+    {l s='Cawl Online Payments' mod='cawlop'}
   </div>
   {if isset($worldlineopAjaxTransactionError)}
     <div class="alert alert-danger">
@@ -23,31 +23,31 @@
   {/if}
   {if isset($captureConfirmation) && $captureConfirmation}
     <div class="alert alert-success">
-      <p class="text-success">{l s='Capture requested successfully' mod='worldlineop'}</p>
+      <p class="text-success">{l s='Capture requested successfully' mod='cawlop'}</p>
     </div>
   {/if}
   {if isset($refundConfirmation) && $refundConfirmation}
     <div class="alert alert-success">
-      <p class="text-success">{l s='Refund requested successfully' mod='worldlineop'}</p>
+      <p class="text-success">{l s='Refund requested successfully' mod='cawlop'}</p>
     </div>
   {/if}
   {if isset($cancelConfirmation) && $cancelConfirmation}
     <div class="alert alert-success">
-      <p class="text-success">{l s='Cancellation requested successfully' mod='worldlineop'}</p>
+      <p class="text-success">{l s='Cancellation requested successfully' mod='cawlop'}</p>
     </div>
   {/if}
   <div class="well">
     <div class="row">
       <div class="col-sm-3 text-center">
-        <p class="text-muted"><strong>{l s='Status' mod='worldlineop'}</strong></p>
+        <p class="text-muted"><strong>{l s='Status' mod='cawlop'}</strong></p>
         <strong id="">{$transactionData.payment.status|escape:'htmlall':'UTF-8'}</strong>
       </div>
       <div class="col-sm-3 text-center">
-        <p class="text-muted"><strong>{l s='Transaction number' mod='worldlineop'}</strong></p>
+        <p class="text-muted"><strong>{l s='Transaction number' mod='cawlop'}</strong></p>
         <strong id="">{$transactionData.payment.id|escape:'htmlall':'UTF-8'}</strong>
       </div>
       <div id="" class="col-sm-3 text-center">
-        <p class="text-muted"><strong>{l s='Total' mod='worldlineop'}</strong></p>
+        <p class="text-muted"><strong>{l s='Total' mod='cawlop'}</strong></p>
         <strong id="">
           {$transactionData.payment.amount|escape:'htmlall':'UTF-8'}
           {$transactionData.payment.currencyCode|escape:'htmlall':'UTF-8'}
@@ -55,26 +55,26 @@
         {if $transactionData.payment.hasSurcharge}
           <div>
             <i>
-              {l s='(including' mod='worldlineop'}
+              {l s='(including' mod='cawlop'}
               {$transactionData.payment.surchargeAmount|escape:'htmlall':'UTF-8'} {$transactionData.payment.currencyCode|escape:'htmlall':'UTF-8'}
-              {l s='surcharge)' mod='worldlineop'}
+              {l s='surcharge)' mod='cawlop'}
             </i>
           </div>
         {/if}
       </div>
       <div id="" class="col-sm-3 text-center">
-        <p class="text-muted"><strong>{l s='Payment Method' mod='worldlineop'}</strong></p>
+        <p class="text-muted"><strong>{l s='Payment Method' mod='cawlop'}</strong></p>
         <img src="{$settingsData.extra.path.img|escape:'htmlall':'UTF-8'}payment_logos/{$transactionData.payment.productId|intval}.svg"
              style="height: 30px;"/>
       </div>
       <div id="" class="col-sm-3 text-center">
-        <p class="text-muted"><strong>{l s='Fraud result' mod='worldlineop'}</strong></p>
+        <p class="text-muted"><strong>{l s='Fraud result' mod='cawlop'}</strong></p>
         <strong id="">
           {$transactionData.payment.fraudResult|escape:'htmlall':'UTF-8'}
         </strong>
       </div>
       <div id="" class="col-sm-3 text-center">
-        <p class="text-muted"><strong>{l s='Liability' mod='worldlineop'}</strong></p>
+        <p class="text-muted"><strong>{l s='Liability' mod='cawlop'}</strong></p>
         <strong id="">
           {$transactionData.payment.liability|escape:'htmlall':'UTF-8'}
         </strong>
@@ -85,7 +85,7 @@
     <div class="alert alert-danger">
       <ul>
         {foreach $transactionData.payment.errors as $error}
-          <li><b>{l s='Error ID:' mod='worldlineop'}</b>{$error.id|escape:'htmlall':'UTF-8'} - <b>{l s='Code' mod='worldlineop'}</b> {$error.code|escape:'htmlall':'UTF-8'}</li>
+          <li><b>{l s='Error ID:' mod='cawlop'}</b>{$error.id|escape:'htmlall':'UTF-8'} - <b>{l s='Code' mod='cawlop'}</b> {$error.code|escape:'htmlall':'UTF-8'}</li>
         {/foreach}
       </ul>
     </div>
@@ -93,10 +93,10 @@
   {if $transactionData.payment.psOrderAmountMatch === false}
     <div class="alert alert-warning">
       <p>
-        {l s='Warning: This order may not have been fully paid!' mod='worldlineop'}
+        {l s='Warning: This order may not have been fully paid!' mod='cawlop'}
       </p>
       <p>
-        {l s='Please review the amounts in the section above and in the "Products" section in this page.' mod='worldlineop'}<br>
+        {l s='Please review the amounts in the section above and in the "Products" section in this page.' mod='cawlop'}<br>
       </p>
     </div>
   {/if}
@@ -106,9 +106,9 @@
         <div class="card-body">
           <div class="row">
             {if $transactionData.payment.hasSurcharge}
-              <h4>{l s='Surcharge details' mod='worldlineop'}</h4>
+              <h4>{l s='Surcharge details' mod='cawlop'}</h4>
               <div class="row">
-                <div class="col-xs-6 text-right">{l s='Total amount without surcharge' mod='worldlineop'}</div>
+                <div class="col-xs-6 text-right">{l s='Total amount without surcharge' mod='cawlop'}</div>
                 <div class="col-xs-6">
                   <strong>
                     {$transactionData.payment.amountWithoutSurcharge|escape:'htmlall':'UTF-8'}
@@ -117,7 +117,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-xs-6 text-right">{l s='Surcharge amount' mod='worldlineop'}</div>
+                <div class="col-xs-6 text-right">{l s='Surcharge amount' mod='cawlop'}</div>
                 <div class="col-xs-6">
                   <strong>
                     {$transactionData.payment.surchargeAmount|escape:'htmlall':'UTF-8'}
@@ -126,7 +126,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-xs-6 text-right">{l s='Total amount with surcharge' mod='worldlineop'}</div>
+                <div class="col-xs-6 text-right">{l s='Total amount with surcharge' mod='cawlop'}</div>
                 <div class="col-xs-6">
                   <strong>
                     {$transactionData.payment.amount|escape:'htmlall':'UTF-8'}
@@ -136,9 +136,9 @@
               </div>
               <hr>
             {/if}
-            <h4>{l s='Capture' mod='worldlineop'}</h4>
+            <h4>{l s='Capture' mod='cawlop'}</h4>
             <div class="row">
-              <div class="col-xs-6 text-right">{l s='Amount captured' mod='worldlineop'}</div>
+              <div class="col-xs-6 text-right">{l s='Amount captured' mod='cawlop'}</div>
               <div class="col-xs-6">
                 <strong>
                   {$transactionData.captures.totalCaptured|escape:'htmlall':'UTF-8'}
@@ -147,7 +147,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-6 text-right">{l s='Amount pending capture' mod='worldlineop'}</div>
+              <div class="col-xs-6 text-right">{l s='Amount pending capture' mod='cawlop'}</div>
               <div class="col-xs-6">
                 <strong>
                   {$transactionData.captures.totalPendingCapture|escape:'htmlall':'UTF-8'}
@@ -156,7 +156,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-6 text-right">{l s='Amount that can be captured' mod='worldlineop'}</div>
+              <div class="col-xs-6 text-right">{l s='Amount that can be captured' mod='cawlop'}</div>
               <div class="col-xs-6">
                 <strong>
                   {$transactionData.captures.capturableAmount|escape:'htmlall':'UTF-8'}
@@ -166,7 +166,7 @@
             </div>
             {if $transactionData.actions.isAuthorized && $transactionData.captures.capturableAmount > 0}
               <form class="form-horizontal"
-                    action="{$link->getAdminLink('AdminWorldlineopAjaxTransaction')|escape:'htmlall':'UTF-8'}"
+                    action="{$link->getAdminLink('AdminCawleopAjaxTransaction')|escape:'htmlall':'UTF-8'}"
                     name="worldlineop_capture"
                     id="worldlineop-capture-form"
                     method="post"
@@ -184,7 +184,7 @@
                         <span class="input-group-text">{$transactionData.payment.currencyCode|escape:'htmlall':'UTF-8'}</span>
                       </div>
                       <button id="worldlineop-btn-capture" class="btn btn-primary pull-right">
-                        {l s='Capture' mod='worldlineop'}
+                        {l s='Capture' mod='cawlop'}
                       </button>
                     </div>
                     <input type="hidden" name="transaction[id]" value="{$transactionData.payment.id|escape:'htmlall':'UTF-8'}"/>
@@ -197,12 +197,12 @@
             {/if}
             {if $transactionData.actions.isCancellable}
               <hr>
-              <h4>{l s='Capture' mod='worldlineop'}</h4>
+              <h4>{l s='Capture' mod='cawlop'}</h4>
               <div class="alert alert-warning">
-                <p class="alert-text">{l s='Be careful, this action cannot be reverted' mod='worldlineop'}</p>
+                <p class="alert-text">{l s='Be careful, this action cannot be reverted' mod='cawlop'}</p>
               </div>
               <form class="form-horizontal"
-                    action="{$link->getAdminLink('AdminWorldlineopAjaxTransaction')|escape:'htmlall':'UTF-8'}"
+                    action="{$link->getAdminLink('AdminCawlopAjaxTransaction')|escape:'htmlall':'UTF-8'}"
                     name="worldlineop_cancel"
                     id="worldlineop-cancel-form"
                     method="post"
@@ -210,7 +210,7 @@
                 <div class="form-group row">
                   <div class="col-sm">
                     <button id="worldlineop-btn-cancel"  class="btn btn-danger">
-                      {l s='Cancel' mod='worldlineop'}
+                      {l s='Cancel' mod='cawlop'}
                       {$transactionData.captures.capturableAmount|escape:'htmlall':'UTF-8'}
                       {$transactionData.payment.currencyCode|escape:'htmlall':'UTF-8'}
                     </button>
@@ -230,9 +230,9 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
-            <h4>{l s='Refund' mod='worldlineop'}</h4>
+            <h4>{l s='Refund' mod='cawlop'}</h4>
             <div class="row">
-              <div class="col-xs-6 text-right">{l s='Amount refunded' mod='worldlineop'}</div>
+              <div class="col-xs-6 text-right">{l s='Amount refunded' mod='cawlop'}</div>
               <div class="col-xs-6">
                 <strong>
                   {$transactionData.refunds.totalRefunded|escape:'htmlall':'UTF-8'}
@@ -241,7 +241,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-6 text-right">{l s='Amount pending refund' mod='worldlineop'}</div>
+              <div class="col-xs-6 text-right">{l s='Amount pending refund' mod='cawlop'}</div>
               <div class="col-xs-6">
                 <strong>
                   {$transactionData.refunds.totalPendingRefund|escape:'htmlall':'UTF-8'}
@@ -250,7 +250,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-6 text-right">{l s='Amount that can be refunded' mod='worldlineop'}</div>
+              <div class="col-xs-6 text-right">{l s='Amount that can be refunded' mod='cawlop'}</div>
               <div class="col-xs-6">
                 <strong>
                   {$transactionData.refunds.refundableAmount|escape:'htmlall':'UTF-8'}
@@ -262,14 +262,14 @@
               <hr>
               <div class="alert alert-info">
                 <p>
-                  {l s='You can make refunds if the initial transaction is fully captured or partially cancelled' mod='worldlineop'}
+                  {l s='You can make refunds if the initial transaction is fully captured or partially cancelled' mod='cawlop'}
                 </p>
               </div>
             {/if}
             {if $transactionData.actions.isRefundable && $transactionData.refunds.refundableAmount > 0}
               <hr>
               <form class="form-horizontal"
-                    action="{$link->getAdminLink('AdminWorldlineopAjaxTransaction')|escape:'htmlall':'UTF-8'}"
+                    action="{$link->getAdminLink('AdminCawlopAjaxTransaction')|escape:'htmlall':'UTF-8'}"
                     name="worldlineop_refund"
                     id="worldlineop-refund-form"
                     method="post"
@@ -287,7 +287,7 @@
                         <span class="input-group-text">{$transactionData.payment.currencyCode|escape:'htmlall':'UTF-8'}</span>
                       </div>
                       <button id="worldlineop-btn-refund" class="btn btn-primary pull-right">
-                        {l s='Make refund' mod='worldlineop'}
+                        {l s='Make refund' mod='cawlop'}
                       </button>
                     </div>
                     <input type="hidden" name="transaction[id]" value="{$transactionData.payment.id|escape:'htmlall':'UTF-8'}"/>

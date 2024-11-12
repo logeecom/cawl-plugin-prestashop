@@ -18,7 +18,7 @@ use Cart;
 use OnlinePayments\Sdk\Domain\RefundResponse;
 use Order;
 use Validate;
-use Worldlineop;
+use Cawlop;
 use WorldlineOP\PrestaShop\Logger\LoggerFactory;
 use WorldlineOP\PrestaShop\Repository\TransactionRepository;
 use WorldlineOP\PrestaShop\Utils\Tools;
@@ -28,7 +28,7 @@ use WorldlineOP\PrestaShop\Utils\Tools;
  */
 class GetRefundPresenter implements PresenterInterface
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     private $module;
 
     /** @var \Monolog\Logger */
@@ -40,11 +40,11 @@ class GetRefundPresenter implements PresenterInterface
     /**
      * GetRefundPresenter constructor.
      *
-     * @param Worldlineop $module
+     * @param Cawlop $module
      * @param LoggerFactory $loggerFactory
      */
     public function __construct(
-        Worldlineop $module,
+        Cawlop        $module,
         LoggerFactory $loggerFactory
     ) {
         $this->module = $module;
@@ -84,7 +84,7 @@ class GetRefundPresenter implements PresenterInterface
             return $this->presentedData;
         }
         /** @var TransactionRepository $transactionRepository */
-        $transactionRepository = $this->module->getService('worldlineop.repository.transaction');
+        $transactionRepository = $this->module->getService('cawlop.repository.transaction');
         /** @var \WorldlineopTransaction $transaction */
         $transaction = $transactionRepository->findByIdOrder($order->id);
         $merchantReference = strstr($refundResponse->getId(), '_', true);

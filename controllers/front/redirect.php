@@ -18,9 +18,9 @@ if (!defined('_PS_VERSION_')) {
 use WorldlineOP\PrestaShop\Configuration\Entity\Settings;
 
 /**
- * Class WorldlineopRedirectModuleFrontController
+ * Class CawlopRedirectModuleFrontController
  */
-class WorldlineopRedirectModuleFrontController extends ModuleFrontController
+class CawlopRedirectModuleFrontController extends ModuleFrontController
 {
     const HC_STATUS_CANCELLED = 'CANCELLED_BY_CONSUMER';
     const HC_STATUS_CREATED = 'PAYMENT_CREATED';
@@ -31,7 +31,7 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
 
     const ACTIONS = ['redirectReturnHosted', 'redirectReturnIframe', 'redirectReturnInternalIframe'];
 
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     /** @var \Monolog\Logger */
@@ -50,15 +50,15 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
     private $cartChecksum;
 
     /**
-     * WorldlineopRedirectModuleFrontController constructor.
+     * CawlopRedirectModuleFrontController constructor.
      */
     public function __construct()
     {
         parent::__construct();
-        $this->hostedCheckoutRepository = $this->module->getService('worldlineop.repository.hosted_checkout');
-        $this->createdPaymentRepository = $this->module->getService('worldlineop.repository.created_payment');
-        $this->merchantClient = $this->module->getService('worldlineop.sdk.client');
-        $this->cartChecksum = $this->module->getService('worldlineop.checksum.cart');
+        $this->hostedCheckoutRepository = $this->module->getService('cawlop.repository.hosted_checkout');
+        $this->createdPaymentRepository = $this->module->getService('cawlop.repository.created_payment');
+        $this->merchantClient = $this->module->getService('cawlop.sdk.client');
+        $this->cartChecksum = $this->module->getService('cawlop.checksum.cart');
     }
 
     /**
@@ -79,7 +79,7 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
      */
     public function display()
     {
-        $this->setTemplate('module:worldlineop/views/templates/front/redirect.tpl');
+        $this->setTemplate('module:cawlop/views/templates/front/redirect.tpl');
         $action = Tools::getValue('action');
         if (!in_array($action, self::ACTIONS)) {
             Tools::redirect($this->context->link->getPageLink('order', null, null, ['step' => 3]));
@@ -109,7 +109,7 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
     public function displayAjaxRedirectExternal()
     {
         /** @var \WorldlineOP\PrestaShop\Logger\LoggerFactory $loggerFactory */
-        $loggerFactory = $this->module->getService('worldlineop.logger.factory');
+        $loggerFactory = $this->module->getService('cawlop.logger.factory');
         $this->logger = $loggerFactory->setChannel('RedirectExternal');
         $cart = $this->context->cart;
         $idProduct = Tools::getValue('productId');
@@ -118,7 +118,7 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
             $tokenValue = false;
         } else {
             /** @var \WorldlineOP\PrestaShop\Repository\TokenRepository $tokenRepository */
-            $tokenRepository = $this->module->getService('worldlineop.repository.token');
+            $tokenRepository = $this->module->getService('cawlop.repository.token');
             $token = $tokenRepository->findById($idToken);
             if (false === $token
                 || $token->secure_key !== $this->context->customer->secure_key
@@ -167,7 +167,7 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
         }
 
         /** @var \WorldlineOP\PrestaShop\Builder\PaymentRequestDirector $hostedCheckoutDirector */
-        $hostedCheckoutDirector = $this->module->getService('worldlineop.hosted_payment_request.director');
+        $hostedCheckoutDirector = $this->module->getService('cawlop.hosted_payment_request.director');
         try {
             $hostedCheckoutRequest = $hostedCheckoutDirector->buildHostedPaymentRequest($idProduct, $tokenValue);
             $this->logger->debug(
@@ -234,7 +234,7 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
     public function displayAjaxRedirectReturnHosted()
     {
         /** @var \WorldlineOP\PrestaShop\Logger\LoggerFactory $loggerFactory */
-        $loggerFactory = $this->module->getService('worldlineop.logger.factory');
+        $loggerFactory = $this->module->getService('cawlop.logger.factory');
         $this->logger = $loggerFactory->setChannel('Redirect');
 
         /** @var HostedCheckout $hostedCheckout */
@@ -286,12 +286,12 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
         $this->logger->debug('Get call');
         $paymentResponse = $hostedCheckoutResponse->getCreatedPaymentOutput()->getPayment();
         /** @var \WorldlineOP\PrestaShop\Presenter\GetPaymentPresenter $getPaymentPresenter */
-        $getPaymentPresenter = $this->module->getService('worldlineop.getpayment.presenter');
+        $getPaymentPresenter = $this->module->getService('cawlop.getpayment.presenter');
         try {
             $presentedData = $getPaymentPresenter->present($paymentResponse, $cart->id_shop);
             $this->logger->debug('Presented data after GET call', ['data' => $presentedData]);
             /** @var \WorldlineOP\PrestaShop\Processor\TransactionResponseProcessor $transactionResponseProcessor */
-            $transactionResponseProcessor = $this->module->getService('worldlineop.processor.transaction');
+            $transactionResponseProcessor = $this->module->getService('cawlop.processor.transaction');
             $transactionResponseProcessor->process($presentedData);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
@@ -306,7 +306,7 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
     public function displayAjaxRedirectReturnIframe()
     {
         /** @var \WorldlineOP\PrestaShop\Logger\LoggerFactory $loggerFactory */
-        $loggerFactory = $this->module->getService('worldlineop.logger.factory');
+        $loggerFactory = $this->module->getService('cawlop.logger.factory');
         $this->logger = $loggerFactory->setChannel('RedirectIframe');
 
         /** @var CreatedPayment $createdPayment */
@@ -324,7 +324,7 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
     public function displayAjaxRedirectReturnInternalIframe()
     {
         /** @var \WorldlineOP\PrestaShop\Logger\LoggerFactory $loggerFactory */
-        $loggerFactory = $this->module->getService('worldlineop.logger.factory');
+        $loggerFactory = $this->module->getService('cawlop.logger.factory');
         $this->logger = $loggerFactory->setChannel('RedirectInternalIframe');
 
         /** @var CreatedPayment $createdPayment */
@@ -365,11 +365,11 @@ class WorldlineopRedirectModuleFrontController extends ModuleFrontController
         }
         $this->logger->debug('Get call');
         /** @var \WorldlineOP\PrestaShop\Presenter\GetPaymentPresenter $getPaymentPresenter */
-        $getPaymentPresenter = $this->module->getService('worldlineop.getpayment.presenter');
+        $getPaymentPresenter = $this->module->getService('cawlop.getpayment.presenter');
         try {
             $presentedData = $getPaymentPresenter->present($paymentResponse, $cart->id_shop);
             /** @var \WorldlineOP\PrestaShop\Processor\TransactionResponseProcessor $transactionResponseProcessor */
-            $transactionResponseProcessor = $this->module->getService('worldlineop.processor.transaction');
+            $transactionResponseProcessor = $this->module->getService('cawlop.processor.transaction');
             $transactionResponseProcessor->process($presentedData);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());

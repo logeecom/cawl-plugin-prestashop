@@ -16,17 +16,17 @@ if (!defined('_PS_VERSION_')) {
 }
 
 /**
- * Class AdminWorldlineLogsController
+ * Class AdminCawlLogsController
  */
-class AdminWorldlineopLogsController extends ModuleAdminController
+class AdminCawlopLogsController extends ModuleAdminController
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     public function processDownloadLogFile()
     {
         /** @var \Monolog\Logger $logger */
-        $logger = $this->module->getService('worldlineop.logger');
+        $logger = $this->module->getService('cawlop.logger');
         $handlers = $logger->getHandlers();
         foreach ($handlers as $handler) {
             if ($handler instanceof \Monolog\Handler\RotatingFileHandler) {
@@ -44,7 +44,7 @@ class AdminWorldlineopLogsController extends ModuleAdminController
             }
         }
         // @formatter:off
-        $this->errors[] = $this->module->l('Log file not found. Make sure logs are enabled', 'AdminWorldlineopLogsController');
+        $this->errors[] = $this->module->l('Log file not found. Make sure logs are enabled', 'AdminCawlopLogsController');
         // @formatter:on
     }
 }

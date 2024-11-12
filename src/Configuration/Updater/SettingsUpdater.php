@@ -44,7 +44,7 @@ abstract class SettingsUpdater
     /** @var AbstractValidationData */
     protected $validationData;
 
-    /** @var \Worldlineop */
+    /** @var \Cawlop */
     protected $module;
 
     /** @var string */
@@ -60,14 +60,14 @@ abstract class SettingsUpdater
      * @param AbstractSettingsResolver $resolver
      * @param Settings $settings
      * @param AbstractValidationData $validationData
-     * @param \Worldlineop $module
+     * @param \Cawlop $module
      */
     public function __construct(
         Serializer $serializer,
         AbstractSettingsResolver $resolver,
         Settings $settings,
         AbstractValidationData $validationData,
-        \Worldlineop $module
+        \Cawlop $module
     ) {
         $this->serializer = $serializer;
         $this->resolver = $resolver;

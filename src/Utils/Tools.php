@@ -226,7 +226,7 @@ class Tools
             null,
             null,
             null,
-            _PS_MODULE_DIR_ . 'worldlineop/mails/'
+            _PS_MODULE_DIR_ . 'cawlop/mails/'
         );
     }
 

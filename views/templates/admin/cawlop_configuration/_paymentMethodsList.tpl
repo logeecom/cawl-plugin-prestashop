@@ -14,7 +14,7 @@
 
 {if empty($data['paymentMethodsSettings'][$name|escape:'html':'UTF-8'])}
   <div class="alert alert-info">
-    {l s='You do not have any payment methods. Please refresh the list to sync payment options' mod='worldlineop'}
+    {l s='You do not have any payment methods. Please refresh the list to sync payment options' mod='cawlop'}
   </div>
 {/if}
 
@@ -28,7 +28,7 @@
         </div>
         <p class="title">{$paymentMethod.identifier|escape:'html':'UTF-8'}</p>
         {if 'iframePaymentMethods' !== $name}
-          <span class="enable-title">{l s='Enable' mod='worldlineop'}</span>
+          <span class="enable-title">{l s='Enable' mod='cawlop'}</span>
           <span class="switch prestashop-switch fixed-width-md">
             <input type="radio"
                    value="1"
@@ -36,7 +36,7 @@
                    id="worldlineopPaymentMethodsSettings_{$type|escape:'html':'UTF-8'}_product_{$paymentMethod.productId|intval}_enabled_on"
                    {if $paymentMethod.enabled === true}checked="checked"{/if}>
             <label for="worldlineopPaymentMethodsSettings_{$type|escape:'html':'UTF-8'}_product_{$paymentMethod.productId|intval}_enabled_on">
-              {l s='Yes' mod='worldlineop'}
+              {l s='Yes' mod='cawlop'}
             </label>
             <input type="radio"
                    value="0"
@@ -44,7 +44,7 @@
                    id="worldlineopPaymentMethodsSettings_{$type|escape:'html':'UTF-8'}_product_{$paymentMethod.productId|intval}_enabled_off"
                    {if $paymentMethod.enabled != true}checked="checked"{/if}>
             <label for="worldlineopPaymentMethodsSettings_{$type|escape:'html':'UTF-8'}_product_{$paymentMethod.productId|intval}_enabled_off">
-              {l s='No' mod='worldlineop'}
+              {l s='No' mod='cawlop'}
             </label>
             <a class="slide-button btn"></a>
           </span>

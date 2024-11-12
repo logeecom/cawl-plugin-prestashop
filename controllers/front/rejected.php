@@ -16,11 +16,11 @@ if (!defined('_PS_VERSION_')) {
 }
 
 /**
- * Class WorldlineopRejectedModuleFrontController
+ * Class CawlopRejectedModuleFrontController
  */
-class WorldlineopRejectedModuleFrontController extends ModuleFrontController
+class CawlopRejectedModuleFrontController extends ModuleFrontController
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     public function __construct()
@@ -53,6 +53,6 @@ class WorldlineopRejectedModuleFrontController extends ModuleFrontController
             'reorder_link' => $reOrderLink,
         ]);
 
-        $this->setTemplate('module:worldlineop/views/templates/front/rejected.tpl');
+        $this->setTemplate('module:cawlop/views/templates/front/rejected.tpl');
     }
 }

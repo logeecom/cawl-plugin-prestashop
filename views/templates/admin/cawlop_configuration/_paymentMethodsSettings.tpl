@@ -23,23 +23,23 @@
       <div class="worldlineop-payment-methods-settings col-xs-12">
         <div class="alert alert-info">
           <p>
-            {l s='In this section, you can customize the display of your payment methods to pay in:' mod='worldlineop'}
+            {l s='In this section, you can customize the display of your payment methods to pay in:' mod='cawlop'}
             <ul>
-              <li><b>{l s='Redirect mode' mod='worldlineop'}</b> {l s='(All payment methods) Customers will complete the PAYMENT ON REDIRECTION to a Worldline Hosted Page' mod='worldlineop'}</li>
-              <li><b>{l s='One page checkout' mod='worldlineop'}</b> {l s='(Cards only) Customers will complete the PAYMENT ON YOUR WEBSITE itself with an embedded iFrame (no redirection)' mod='worldlineop'}</li>
+              <li><b>{l s='Redirect mode' mod='cawlop'}</b> {l s='(All payment methods) Customers will complete the PAYMENT ON REDIRECTION to a Cawl Hosted Page' mod='cawlop'}</li>
+              <li><b>{l s='One page checkout' mod='cawlop'}</b> {l s='(Cards only) Customers will complete the PAYMENT ON YOUR WEBSITE itself with an embedded iFrame (no redirection)' mod='cawlop'}</li>
             </ul>
           </p>
           <p>
-            {l s='Please note that you can fully customize the payment page by setting the name of a template you created previously in the File Manager, on the Worldline portal.' mod='worldlineop'}
+            {l s='Please note that you can fully customize the payment page by setting the name of a template you created previously in the File Manager, on the Cawl portal.' mod='cawlop'}
           </p>
         </div>
 
-        <h3 class="title">{l s='Redirect Mode (All Payment Methods)' mod='worldlineop'}</h3>
+        <h3 class="title">{l s='Redirect Mode (All Payment Methods)' mod='cawlop'}</h3>
         <!-- Display Generic Button -->
         <div class="form-group">
           <label class="control-label col-lg-3 ">
             <span>
-              {l s='Payment method selection after redirect' mod='worldlineop'}<br>
+              {l s='Payment method selection after redirect' mod='cawlop'}<br>
             </span>
           </label>
           <div class="col-lg-9">
@@ -49,19 +49,19 @@
                      name="worldlineopPaymentMethodsSettings[displayGenericOption]"
                      id="worldlineopPaymentMethodsSettings_displayGenericOption_on"
                      {if $data.paymentMethodsSettings.displayGenericOption === true}checked="checked"{/if}>
-              <label for="worldlineopPaymentMethodsSettings_displayGenericOption_on">{l s='Yes' mod='worldlineop'}</label>
+              <label for="worldlineopPaymentMethodsSettings_displayGenericOption_on">{l s='Yes' mod='cawlop'}</label>
               <input type="radio"
                      value="0"
                      name="worldlineopPaymentMethodsSettings[displayGenericOption]"
                      id="worldlineopPaymentMethodsSettings_displayGenericOption_off"
                      {if $data.paymentMethodsSettings.displayGenericOption != true}checked="checked"{/if}>
-              <label for="worldlineopPaymentMethodsSettings_displayGenericOption_off">{l s='No' mod='worldlineop'}</label>
+              <label for="worldlineopPaymentMethodsSettings_displayGenericOption_off">{l s='No' mod='cawlop'}</label>
               <a class="slide-button btn"></a>
             </span>
           </div>
           <div class="col-lg-9 col-lg-offset-3">
             <div class="help-block">
-              {l s='A unique pay button to be redirected to pay on Worldline hosted page' mod='worldlineop'}
+              {l s='A unique pay button to be redirected to pay on Cawl hosted page' mod='cawlop'}
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@
         <div class="form-group">
           <label class="control-label col-lg-3 ">
               <span>
-                {l s='Generic logo displayed on your payment page' mod='worldlineop'}
+                {l s='Generic logo displayed on your payment page' mod='cawlop'}
               </span>
           </label>
           <div class="col-lg-9">
@@ -85,18 +85,18 @@
             <label for="worldlineopPaymentMethodsSettings[genericLogo]">
               <i class="icon icon-upload"></i>
               <span>
-                    {l s='Upload' mod='worldlineop'}
+                    {l s='Upload' mod='cawlop'}
                   </span>
             </label>
           </div>
           <div class="col-lg-9 col-lg-offset-3">
               {if $data.paymentMethodsSettings.genericLogoFilename}
                 <input type="checkbox" id="worldlineopPaymentMethodsSettings[deleteGenericLogo]" name="worldlineopPaymentMethodsSettings[deleteGenericLogo]" />
-                <label for="worldlineopPaymentMethodsSettings[deleteGenericLogo]">{l s='Delete current logo' mod='worldlineop'}</label>
+                <label for="worldlineopPaymentMethodsSettings[deleteGenericLogo]">{l s='Delete current logo' mod='cawlop'}</label>
               {/if}
             <div class="help-block">
-                {l s='You can upload here a new logo (file types accepted for logos are: .png .gif .jpg only)' mod='worldlineop'}<br/>
-                {l s='We recommend that you use images with 20px height & 120px length maximum' mod='worldlineop'}
+                {l s='You can upload here a new logo (file types accepted for logos are: .png .gif .jpg only)' mod='cawlop'}<br/>
+                {l s='We recommend that you use images with 20px height & 120px length maximum' mod='cawlop'}
               <span></span>
             </div>
           </div>
@@ -106,7 +106,7 @@
         <div class="form-group">
           <label class="control-label col-lg-3 ">
             <span>
-              {l s='Pay button title' mod='worldlineop'}
+              {l s='Pay button title' mod='cawlop'}
             </span>
           </label>
           <div class="col-lg-9">
@@ -142,7 +142,7 @@
           </div>
           <div class="col-lg-9 col-lg-offset-3">
             <div class="help-block">
-              {l s='Title of the payment selection button on your checkout page' mod='worldlineop'}
+              {l s='Title of the payment selection button on your checkout page' mod='cawlop'}
               <span></span>
             </div>
           </div>
@@ -152,7 +152,7 @@
         <div class="form-group js-worldlineop-display-redirect-pm-block">
           <label class="control-label col-lg-3">
             <span>
-              {l s='Payment method selection before redirect' mod='worldlineop'}<br>
+              {l s='Payment method selection before redirect' mod='cawlop'}<br>
             </span>
           </label>
           <div class="col-lg-9 js-worldlineop-display-redirect-pm-switch">
@@ -162,19 +162,19 @@
                      name="worldlineopPaymentMethodsSettings[displayRedirectPaymentOptions]"
                      id="worldlineopPaymentMethodsSettings_displayRedirectPaymentOptions_on"
                      {if $data.paymentMethodsSettings.displayRedirectPaymentOptions === true}checked="checked"{/if}>
-              <label for="worldlineopPaymentMethodsSettings_displayRedirectPaymentOptions_on">{l s='Yes' mod='worldlineop'}</label>
+              <label for="worldlineopPaymentMethodsSettings_displayRedirectPaymentOptions_on">{l s='Yes' mod='cawlop'}</label>
               <input type="radio"
                      value="0"
                      name="worldlineopPaymentMethodsSettings[displayRedirectPaymentOptions]"
                      id="worldlineopPaymentMethodsSettings_displayRedirectPaymentOptions_off"
                      {if $data.paymentMethodsSettings.displayRedirectPaymentOptions != true}checked="checked"{/if}>
-              <label for="worldlineopPaymentMethodsSettings_displayRedirectPaymentOptions_off">{l s='No' mod='worldlineop'}</label>
+              <label for="worldlineopPaymentMethodsSettings_displayRedirectPaymentOptions_off">{l s='No' mod='cawlop'}</label>
               <a class="slide-button btn"></a>
             </span>
           </div>
           <div class="col-lg-9 col-lg-offset-3">
             <div class="help-block">
-              {l s='Each payment method identified by a button. On click, customer is redirected to pay on Worldline Online Payments page' mod='worldlineop'}
+              {l s='Each payment method identified by a button. On click, customer is redirected to pay on Cawl Online Payments page' mod='cawlop'}
             </div>
           </div>
         </div>
@@ -185,7 +185,7 @@
             <div class="col-lg-offset-3 col-lg-9">
               <button class="btn btn-default js-worldlineop-refresh-redirect-pm-btn">
                 <i class="icon icon-refresh"></i>
-                {l s='Refresh list of available payment methods' mod='worldlineop'}
+                {l s='Refresh list of available payment methods' mod='cawlop'}
               </button>
             </div>
           </div>
@@ -197,7 +197,7 @@
         <!-- Template filename -->
         <div class="form-group">
           <label class="control-label col-lg-3">
-            <span>{l s='Template filename for redirect payment' mod='worldlineop'}</span>
+            <span>{l s='Template filename for redirect payment' mod='cawlop'}</span>
           </label>
           <div class="col-lg-9">
             <div class="fixed-width-xxl">
@@ -209,20 +209,20 @@
           </div>
           <div class="col-lg-9 col-lg-offset-3">
             <div class="help-block">
-              {l s='If you are using a customized template, please enter the name here. If empty, the standard payment page will be displayed.' mod='worldlineop'}<br>
-              {l s='Payment page look and feel can be customized on Worldline Back Office.' mod='worldlineop'}
+              {l s='If you are using a customized template, please enter the name here. If empty, the standard payment page will be displayed.' mod='cawlop'}<br>
+              {l s='Payment page look and feel can be customized on Cawl Back Office.' mod='cawlop'}
             </div>
           </div>
         </div>
         <!-- /Template filename -->
 
 
-        <h3 class="title">{l s='One Page Checkout Mode (Cards only)' mod='worldlineop'}</h3>
+        <h3 class="title">{l s='One Page Checkout Mode (Cards only)' mod='cawlop'}</h3>
         <!-- Display Payment Options -->
         <div class="form-group js-worldlineop-display-iframe-pm-block">
           <label class="control-label col-lg-3">
             <span>
-              {l s='Accept cards payments on iframe' mod='worldlineop'}<br>
+              {l s='Accept cards payments on iframe' mod='cawlop'}<br>
             </span>
           </label>
           <div class="col-lg-9 js-worldlineop-display-iframe-pm-switch">
@@ -232,20 +232,20 @@
                      name="worldlineopPaymentMethodsSettings[displayIframePaymentOptions]"
                      id="worldlineopPaymentMethodsSettings_displayIframePaymentOptions_on"
                      {if $data.paymentMethodsSettings.displayIframePaymentOptions === true}checked="checked"{/if}>
-              <label for="worldlineopPaymentMethodsSettings_displayIframePaymentOptions_on">{l s='Yes' mod='worldlineop'}</label>
+              <label for="worldlineopPaymentMethodsSettings_displayIframePaymentOptions_on">{l s='Yes' mod='cawlop'}</label>
               <input type="radio"
                      value="0"
                      name="worldlineopPaymentMethodsSettings[displayIframePaymentOptions]"
                      id="worldlineopPaymentMethodsSettings_displayIframePaymentOptions_off"
                      {if $data.paymentMethodsSettings.displayIframePaymentOptions != true}checked="checked"{/if}>
-              <label for="worldlineopPaymentMethodsSettings_displayIframePaymentOptions_off">{l s='No' mod='worldlineop'}</label>
+              <label for="worldlineopPaymentMethodsSettings_displayIframePaymentOptions_off">{l s='No' mod='cawlop'}</label>
               <a class="slide-button btn"></a>
             </span>
           </div>
           <div class="col-lg-9 col-lg-offset-3">
             <div class="help-block">
-              {l s='By activating this mode, your customers can pay with card on your checkout page itself without any redirection. ' mod='worldlineop'}<br>
-              {l s='For all other alternate payment methods please select one of the redirection options above.' mod='worldlineop'}
+              {l s='By activating this mode, your customers can pay with card on your checkout page itself without any redirection. ' mod='cawlop'}<br>
+              {l s='For all other alternate payment methods please select one of the redirection options above.' mod='cawlop'}
             </div>
           </div>
         </div>
@@ -255,7 +255,7 @@
           <div class="form-group">
             <label class="control-label col-lg-3 ">
               <span>
-                {l s='Pay button title' mod='worldlineop'}
+                {l s='Pay button title' mod='cawlop'}
               </span>
             </label>
             <div class="col-lg-9">
@@ -291,7 +291,7 @@
             </div>
             <div class="col-lg-9 col-lg-offset-3">
               <div class="help-block">
-                {l s='Title of the payment selection button on your checkout page' mod='worldlineop'}
+                {l s='Title of the payment selection button on your checkout page' mod='cawlop'}
                 <span></span>
               </div>
             </div>
@@ -301,7 +301,7 @@
           <div class="form-group">
             <label class="control-label col-lg-3 ">
               <span>
-                {l s='Logo displayed on your payment page' mod='worldlineop'}
+                {l s='Logo displayed on your payment page' mod='cawlop'}
               </span>
             </label>
             <div class="col-lg-9">
@@ -316,18 +316,18 @@
               <label for="worldlineopPaymentMethodsSettings[iframeLogo]">
                 <i class="icon icon-upload"></i>
                 <span>
-                    {l s='Upload' mod='worldlineop'}
+                    {l s='Upload' mod='cawlop'}
                   </span>
               </label>
             </div>
             <div class="col-lg-9 col-lg-offset-3">
               {if $data.paymentMethodsSettings.iframeLogoFilename}
                 <input type="checkbox" id="worldlineopPaymentMethodsSettings[deleteLogo]" name="worldlineopPaymentMethodsSettings[deleteLogo]" />
-                <label for="worldlineopPaymentMethodsSettings[deleteLogo]">{l s='Delete current logo' mod='worldlineop'}</label>
+                <label for="worldlineopPaymentMethodsSettings[deleteLogo]">{l s='Delete current logo' mod='cawlop'}</label>
               {/if}
               <div class="help-block">
-                {l s='You can upload here a new logo (file types accepted for logos are: .png .gif .jpg only)' mod='worldlineop'}<br/>
-                {l s='We recommend that you use images with 20px height & 120px length maximum' mod='worldlineop'}
+                {l s='You can upload here a new logo (file types accepted for logos are: .png .gif .jpg only)' mod='cawlop'}<br/>
+                {l s='We recommend that you use images with 20px height & 120px length maximum' mod='cawlop'}
                 <span></span>
               </div>
             </div>
@@ -336,12 +336,12 @@
           <!-- Iframe payment methods list -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Payment methods available' mod='worldlineop'}</span>
+              <span>{l s='Payment methods available' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <button class="btn btn-default js-worldlineop-refresh-iframe-pm-btn">
                 <i class="icon icon-refresh"></i>
-                {l s='Refresh list of available payment methods' mod='worldlineop'}
+                {l s='Refresh list of available payment methods' mod='cawlop'}
               </button>
             </div>
           </div>
@@ -352,7 +352,7 @@
           <!-- Template filename -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Template filename' mod='worldlineop'}</span>
+              <span>{l s='Template filename' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -370,7 +370,7 @@
     </div>
     <div class="panel-footer">
       <button type="submit" class="btn btn-default pull-right" name="submitPaymentMethodsSettingsForm">
-        <i class="process-icon-save"></i> {l s='Save' mod='worldlineop'}
+        <i class="process-icon-save"></i> {l s='Save' mod='cawlop'}
       </button>
     </div>
   </form>

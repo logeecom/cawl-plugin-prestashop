@@ -16,26 +16,26 @@
 
 {block name='page_content_container'}
   <div id="js-worldlineop-loader">
-    <h1>{l s='Please wait while we are processing your payment' mod='worldlineop'}</h1>
+    <h1>{l s='Please wait while we are processing your payment' mod='cawlop'}</h1>
     <img src="{$img_path}icons/loader.svg" title="Loading..." alt="Loading..." />
   </div>
   <div id="js-worldlineop-timeout-message" style="display: none;">
     <div class="alert alert-warning">
-      <p>{l s='The transaction has not been confirmed yet.' mod='worldlineop'}</p>
+      <p>{l s='The transaction has not been confirmed yet.' mod='cawlop'}</p>
       <p>
-        {l s='We suggest you contact our customer service using this link:' mod='worldlineop'}
-        <a title="{l s='Contact-us' mod='worldlineop'}" href="{$link->getPageLink('contact', true)}">
+        {l s='We suggest you contact our customer service using this link:' mod='cawlop'}
+        <a title="{l s='Contact-us' mod='cawlop'}" href="{$link->getPageLink('contact', true)}">
           {$link->getPageLink('contact', true)}
         </a>
       </p>
       {if $hostedCheckoutId || $paymentId}
         <p>
-          {l s='Please also provide us these transactions details:' mod='worldlineop'}<br>
+          {l s='Please also provide us these transactions details:' mod='cawlop'}<br>
           {if $paymentId}
-            <b>{l s='Payment ID:' mod='worldlineop'}</b> {$paymentId}
+            <b>{l s='Payment ID:' mod='cawlop'}</b> {$paymentId}
           {/if}
           {if $hostedCheckoutId}
-            <b>{l s='Checkout ID:' mod='worldlineop'}</b> {$hostedCheckoutId}
+            <b>{l s='Checkout ID:' mod='cawlop'}</b> {$hostedCheckoutId}
           {/if}
         </p>
       {/if}

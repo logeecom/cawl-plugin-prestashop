@@ -16,7 +16,7 @@
 {if isset($displayHTP) && $displayHTP}
 <div class="js-payment-binary js-payment-worldlineop-htp worldlineop-htp-btn">
   <button id="js-worldlineop-btn-submit" type="submit" disabled="disabled" class="btn btn-primary center-block">
-    {l s='Place order' mod='worldlineop'}
+    {l s='Place order' mod='cawlop'}
   </button>
 </div>
 {/if}
@@ -27,7 +27,7 @@
     <!-- Token HTP -->
     <div class="js-payment-binary js-payment-worldlineop-token-htp-{$htp.id} worldlineop-token-htp-btn">
       <button id="js-worldlineop-token-btn-submit-{$htp.id}" type="submit" disabled="disabled" class="btn btn-primary center-block">
-        {l s='Place order' mod='worldlineop'}
+        {l s='Place order' mod='cawlop'}
       </button>
     </div>
     <!-- /Token HTP -->

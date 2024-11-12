@@ -13,16 +13,16 @@
  *}
 
 <h1>
-  {l s='What\'s new in version' mod='worldlineop'}
+  {l s='What\'s new in version' mod='cawlop'}
   1.4.2
 </h1>
 <br>
 <ul>
-  <li>{l s='Improvement to webhook response time' mod='worldlineop'}</li>
+  <li>{l s='Improvement to webhook response time' mod='cawlop'}</li>
 </ul>
 <br>
 <hr>
 <a href="#" class="btn btn-primary js-worldlineop-hide-whatsnew worldlineop-btn-hide-whatsnew">
   <i class="icon icon-eye-slash"></i>
-  {l s='Don\'t show this again' mod='worldlineop'}
+  {l s='Don\'t show this again' mod='cawlop'}
 </a>

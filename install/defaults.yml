@@ -1,24 +1,24 @@
 tabs:
-  - className: 'AdminWorldlineopLogs'
+  - className: 'AdminCawlopLogs'
     parentClassName: ''
     names:
-      fr: 'Logs Worldline OP'
-      en: 'Worldline OP Logs'
-  - className: 'AdminWorldlineopAjax'
+      fr: 'Logs Cawl OP'
+      en: 'Cawl OP Logs'
+  - className: 'AdminCawlopAjax'
     parentClassName: ''
     names:
-      fr: 'Ajax Worldline OP'
-      en: 'Worldline OP Ajax'
-  - className: 'AdminWorldlineopAjaxTransaction'
+      fr: 'Ajax Cawl OP'
+      en: 'Cawl OP Ajax'
+  - className: 'AdminCawlopAjaxTransaction'
     parentClassName: ''
     names:
-      fr: 'Ajax Transaction Worldline OP'
-      en: 'Worldline OP Ajax Transaction'
-  - className: 'AdminWorldlineopConfiguration'
+      fr: 'Ajax Transaction Cawl OP'
+      en: 'Cawl OP Ajax Transaction'
+  - className: 'AdminCawlopConfiguration'
     parentClassName: ''
     names:
-      fr: 'Configuration Worldline OP'
-      en: 'Worldline OP Configuration'
+      fr: 'Configuration Cawl OP'
+      en: 'Cawl OP Configuration'
 hooks:
   - 'paymentOptions'
   - 'orderConfirmation'
@@ -83,8 +83,8 @@ configuration:
     paymentFlowSettingsDisplayed: 0
     force3DsV2: 1
     switchEndpoint: 0
-    testEndpoint: 'https://payment.preprod.direct.ingenico.com'
-    prodEndpoint: 'https://payment.direct.ingenico.com'
+    testEndpoint: 'https://payment.preprod.ca.cawl-solutions.fr'
+    prodEndpoint: 'https://payment.ca.cawl-solutions.fr'
     logsEnabled: 0
     paymentSettings:
       transactionType: 'SALE'
@@ -104,12 +104,12 @@ configuration:
     genericLogoFilename: 'worldlineop_symbol.svg'
     redirectTemplateFilename: ''
     redirectCallToAction:
-      fr: 'Payer avec Worldline Online Payments'
-      en: 'Pay with Worldline Online Payments'
-      es: 'Pagar con Worldline Online Payments'
-      it: 'Pagare con Worldline Online Payments'
-      nl: 'Betaal met Worldline Online Payments'
-      de: 'Bezahlen mit Worldline Online Payments'
+      fr: 'Payer avec Cawl Online Payments'
+      en: 'Pay with Cawl Online Payments'
+      es: 'Pagar con Cawl Online Payments'
+      it: 'Pagare con Cawl Online Payments'
+      nl: 'Betaal met Cawl Online Payments'
+      de: 'Bezahlen mit Cawl Online Payments'
     iframeTemplateFilename: ''
     iframeCallToAction:
       fr: 'Payer avec une carte de crédit'

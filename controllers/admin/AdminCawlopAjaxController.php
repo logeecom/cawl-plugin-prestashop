@@ -18,18 +18,18 @@ if (!defined('_PS_VERSION_')) {
 use WorldlineOP\PrestaShop\Exception\ExceptionList;
 
 /**
- * Class AdminWorldlineopAjaxController
+ * Class AdminCawlopAjaxController
  */
-class AdminWorldlineopAjaxController extends ModuleAdminController
+class AdminCawlopAjaxController extends ModuleAdminController
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     /** @var \Monolog\Logger */
     public $logger;
 
     /**
-     * AdminWorldlineAjaxController constructor.
+     * AdminCawlAjaxController constructor.
      *
      * @throws PrestaShopException
      */
@@ -37,7 +37,7 @@ class AdminWorldlineopAjaxController extends ModuleAdminController
     {
         parent::__construct();
         /** @var \WorldlineOP\PrestaShop\Logger\LoggerFactory $loggerFactory */
-        $loggerFactory = $this->module->getService('worldlineop.logger.factory');
+        $loggerFactory = $this->module->getService('cawlop.logger.factory');
         $this->logger = $loggerFactory->setChannel('Ajax');
     }
 
@@ -54,7 +54,7 @@ class AdminWorldlineopAjaxController extends ModuleAdminController
     {
         $paymentType = Tools::getValue('type');
         /** @var \WorldlineOP\PrestaShop\Configuration\Product\GetProductsRequest $productRequest */
-        $productRequest = $this->module->getService('worldlineop.settings.get_products');
+        $productRequest = $this->module->getService('cawlop.settings.get_products');
         try {
             $paymentMethods = $productRequest->request($paymentType);
         } catch (Exception $e) {
@@ -75,7 +75,7 @@ class AdminWorldlineopAjaxController extends ModuleAdminController
         ]);
 
         $html = $this->context->smarty->fetch(
-            $this->module->getLocalPath() . 'views/templates/admin/worldlineop_configuration/_paymentMethodsList.tpl'
+            $this->module->getLocalPath() . 'views/templates/admin/cawlop_configuration/_paymentMethodsList.tpl'
         );
         $this->ajaxDie(json_encode([
             'errors' => false,
@@ -86,7 +86,7 @@ class AdminWorldlineopAjaxController extends ModuleAdminController
     public function ajaxProcessHideWhatsNew()
     {
         /** @var \WorldlineOP\PrestaShop\Configuration\Updater\AdvancedSettingsUpdater $updater */
-        $updater = $this->module->getService('worldlineop.settings.advanced_settings.updater');
+        $updater = $this->module->getService('cawlop.settings.advanced_settings.updater');
         try {
             $updater->update(['displayWhatsNew' => false]);
         } catch (ExceptionList $e) {
@@ -104,7 +104,7 @@ class AdminWorldlineopAjaxController extends ModuleAdminController
     public function displayAjaxWhatsNew()
     {
         $html = $this->context->smarty->fetch(
-            $this->module->getLocalPath() . 'views/templates/admin/worldlineop_configuration/modal/_whatsnew.tpl'
+            $this->module->getLocalPath() . 'views/templates/admin/cawlop_configuration/modal/_whatsnew.tpl'
         );
 
         exit(json_encode([
@@ -119,7 +119,7 @@ class AdminWorldlineopAjaxController extends ModuleAdminController
             'loader' => $this->module->getPathUri() . '/views/img/icons/loader.svg',
         ]);
         $html = $this->context->smarty->fetch(
-            $this->module->getLocalPath() . 'views/templates/admin/worldlineop_configuration/modal/_loading.tpl'
+            $this->module->getLocalPath() . 'views/templates/admin/cawlop_configuration/modal/_loading.tpl'
         );
 
         exit(json_encode([

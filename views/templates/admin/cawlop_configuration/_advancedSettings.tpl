@@ -22,7 +22,7 @@
     <div class="row">
       <div class="worldlineop-advanced-settings col-xs-12">
         <div class="form-group form-group-h2">
-          <h2 class="col-lg-3">{l s='Payment Settings' mod='worldlineop'}</h2>
+          <h2 class="col-lg-3">{l s='Payment Settings' mod='cawlop'}</h2>
           <div class="col-lg-9"></div>
         </div>
         <!-- Transaction Type -->
@@ -31,8 +31,8 @@
             <span class="label-tooltip"
                   data-toggle="tooltip"
                   data-html="true"
-                  data-original-title="{l s='Immediate: Authorize & Capture' mod='worldlineop'}<br>{l s='Authorized: Authorize only with pending Capture' mod='worldlineop'}">
-              {l s='Transaction type' mod='worldlineop'}
+                  data-original-title="{l s='Immediate: Authorize & Capture' mod='cawlop'}<br>{l s='Authorized: Authorize only with pending Capture' mod='cawlop'}">
+              {l s='Transaction type' mod='cawlop'}
             </span>
           </label>
           <div class="col-lg-9">
@@ -43,7 +43,7 @@
                        id="worldlineop-type-immediate"
                        value="{$data.extra.const.TRANSACTION_TYPE_IMMEDIATE|escape:'html':'UTF-8'}"
                        {if $data.advancedSettings.paymentSettings.transactionType === $data.extra.const.TRANSACTION_TYPE_IMMEDIATE}checked="checked"{/if}>
-                {l s='Immediate' mod='worldlineop'}
+                {l s='Immediate' mod='cawlop'}
               </label>
             </div>
             <div class="radio js-worldlineop-transaction-type-switch">
@@ -53,7 +53,7 @@
                        id="worldlineop-type-auth"
                        value="{$data.extra.const.TRANSACTION_TYPE_AUTH|escape:'html':'UTF-8'}"
                        {if $data.advancedSettings.paymentSettings.transactionType != $data.extra.const.TRANSACTION_TYPE_IMMEDIATE}checked="checked"{/if}>
-                {l s='Authorized' mod='worldlineop'}
+                {l s='Authorized' mod='cawlop'}
               </label>
             </div>
           </div>
@@ -64,7 +64,7 @@
           <div class="form-group">
             <label class="control-label col-lg-3 ">
           <span>
-            {l s='Delay before payment capture' mod='worldlineop'}
+            {l s='Delay before payment capture' mod='cawlop'}
           </span>
             </label>
             <div class="col-lg-9">
@@ -73,11 +73,11 @@
                   <option value="{$day|intval}"
                           {if $data.advancedSettings.paymentSettings.captureDelay == $day}selected{/if}>
                     {if $day === 0}
-                      {l s='Manual capture' mod='worldlineop'}
+                      {l s='Manual capture' mod='cawlop'}
                     {elseif $day === 1}
-                      {$day|intval} {l s='day' mod='worldlineop'}
+                      {$day|intval} {l s='day' mod='cawlop'}
                     {else}
-                      {$day|intval} {l s='days' mod='worldlineop'}
+                      {$day|intval} {l s='days' mod='cawlop'}
                     {/if}
                   </option>
                 {/for}
@@ -85,7 +85,7 @@
             </div>
             <div class="col-lg-9 col-lg-offset-3">
               <div class="help-block">
-                {l s='Number of days before triggering automatic payment capture' mod='worldlineop'}
+                {l s='Number of days before triggering automatic payment capture' mod='cawlop'}
                 <span></span>
               </div>
             </div>
@@ -95,11 +95,11 @@
           <div class="form-group">
             <label class="control-label col-lg-3">
               <span>
-                {l s='Capture cronjob' mod='worldlineop'}
+                {l s='Capture cronjob' mod='cawlop'}
               </span>
             </label>
             <div class="col-lg-9">
-              <p class="form-control-static">{l s='Cron command example to run capture process 4 times a day:' mod='worldlineop'}</p>
+              <p class="form-control-static">{l s='Cron command example to run capture process 4 times a day:' mod='cawlop'}</p>
               <p><code>{$data.extra.path.controllers.captureCron|escape:'htmlall':'UTF-8'}</code></p>
             </div>
           </div>
@@ -108,7 +108,7 @@
         <!-- Logs -->
         <div class="form-group">
           <label class="control-label col-lg-3 ">
-            {l s='Enable advanced logging' mod='worldlineop'}
+            {l s='Enable advanced logging' mod='cawlop'}
           </label>
           <div class="col-lg-9">
             <span class="switch prestashop-switch fixed-width-sm">
@@ -117,23 +117,23 @@
                      name="worldlineopAdvancedSettings[logsEnabled]"
                      id="worldlineopAdvancedSettings_logsEnabled_on"
                      {if $data.advancedSettings.logsEnabled === true}checked="checked"{/if}>
-              <label for="worldlineopAdvancedSettings_logsEnabled_on">{l s='Yes' mod='worldlineop'}</label>
+              <label for="worldlineopAdvancedSettings_logsEnabled_on">{l s='Yes' mod='cawlop'}</label>
               <input type="radio"
                      value="0"
                      name="worldlineopAdvancedSettings[logsEnabled]"
                      id="worldlineopAdvancedSettings_logsEnabled_off"
                      {if $data.advancedSettings.logsEnabled != true}checked="checked"{/if}>
-              <label for="worldlineopAdvancedSettings_logsEnabled_off">{l s='No' mod='worldlineop'}</label>
+              <label for="worldlineopAdvancedSettings_logsEnabled_off">{l s='No' mod='cawlop'}</label>
               <a class="slide-button btn"></a>
             </span>
           </div>
           <div class="col-lg-9 col-lg-offset-3">
             <div class="help-block">
-              {l s='The minimum log level will be set to Debug.' mod='worldlineop'}
-              {l s='Older files can be accessed on your server, in the "logs" directory of this module.' mod='worldlineop'}
+              {l s='The minimum log level will be set to Debug.' mod='cawlop'}
+              {l s='Older files can be accessed on your server, in the "logs" directory of this module.' mod='cawlop'}
               <br/>
-              <a href="{$link->getAdminLink('AdminWorldlineopLogs', true, [], ['action' => 'downloadLogFile'])|escape:'html':'UTF-8'}">
-                {l s='Click here to download the latest file' mod='worldlineop'}
+              <a href="{$link->getAdminLink('AdminCawlopLogs', true, [], ['action' => 'downloadLogFile'])|escape:'html':'UTF-8'}">
+                {l s='Click here to download the latest file' mod='cawlop'}
               </a>
               <span></span>
             </div>
@@ -143,7 +143,7 @@
 
         <!-- Payment Flow Modifications -->
         <div class="form-group form-group-h2 js-worldlineop-payment-flow-modifications-block">
-          <h2 class="col-lg-3">{l s='Payment Flow Modifications' mod='worldlineop'}</h2>
+          <h2 class="col-lg-3">{l s='Payment Flow Modifications' mod='cawlop'}</h2>
           <div class="col-lg-9 js-worldlineop-payment-flow-modifications-switch">
             <span class="switch prestashop-switch fixed-width-sm">
               <input type="radio"
@@ -151,13 +151,13 @@
                      name="worldlineopAdvancedSettings[paymentFlowSettingsDisplayed]"
                      id="worldlineopAdvancedSettings_paymentFlowSettingsDisplayed_on"
                      {if $data.advancedSettings.paymentFlowSettingsDisplayed === true}checked="checked"{/if}>
-              <label for="worldlineopAdvancedSettings_paymentFlowSettingsDisplayed_on">{l s='Yes' mod='worldlineop'}</label>
+              <label for="worldlineopAdvancedSettings_paymentFlowSettingsDisplayed_on">{l s='Yes' mod='cawlop'}</label>
               <input type="radio"
                      value="0"
                      name="worldlineopAdvancedSettings[paymentFlowSettingsDisplayed]"
                      id="worldlineopAdvancedSettings_paymentFlowSettingsDisplayed_off"
                      {if $data.advancedSettings.paymentFlowSettingsDisplayed != true}checked="checked"{/if}>
-              <label for="worldlineopAdvancedSettings_paymentFlowSettingsDisplayed_off">{l s='No' mod='worldlineop'}</label>
+              <label for="worldlineopAdvancedSettings_paymentFlowSettingsDisplayed_off">{l s='No' mod='cawlop'}</label>
               <a class="slide-button btn"></a>
             </span>
           </div>
@@ -166,13 +166,13 @@
 
         <div class="js-worldlineop-payment-flow-modifications-settings-block">
           <div class="alert alert-info">
-            {l s='We recommend you to use the default settings unless absolutely necessary' mod='worldlineop'}
+            {l s='We recommend you to use the default settings unless absolutely necessary' mod='cawlop'}
           </div>
           <!-- Payment accepted status mapping -->
           <div class="form-group">
             <label class="control-label col-lg-3" for="worldlineopAdvancedSettings[paymentSettings][successOrderStateId]">
             <span>
-              {l s='Payment accepted status mapping' mod='worldlineop'}
+              {l s='Payment accepted status mapping' mod='cawlop'}
             </span>
             </label>
             <div class="col-lg-9">
@@ -181,7 +181,7 @@
                   <option value="{$status.id_order_state|intval}"
                           {if $status.id_order_state == $data.advancedSettings.paymentSettings.successOrderStateId}selected{/if}>
                     {$status.name|escape:'html':'UTF-8'}
-                    {if $status.id_order_state == $data.extra.defaultStatuses.PS_OS_PAYMENT}{l s='(default)' mod='worldlineop'}{/if}
+                    {if $status.id_order_state == $data.extra.defaultStatuses.PS_OS_PAYMENT}{l s='(default)' mod='cawlop'}{/if}
                   </option>
                 {/foreach}
               </select>
@@ -192,7 +192,7 @@
           <div class="form-group">
             <label class="control-label col-lg-3" for="worldlineopAdvancedSettings[paymentSettings][successOrderStateId]">
             <span>
-              {l s='Payment error status mapping' mod='worldlineop'}
+              {l s='Payment error status mapping' mod='cawlop'}
             </span>
             </label>
             <div class="col-lg-9">
@@ -201,7 +201,7 @@
                   <option value="{$status.id_order_state|intval}"
                           {if $status.id_order_state == $data.advancedSettings.paymentSettings.errorOrderStateId}selected{/if}>
                     {$status.name|escape:'html':'UTF-8'}
-                    {if $status.id_order_state == $data.extra.defaultStatuses.PS_OS_ERROR}{l s='(default)' mod='worldlineop'}{/if}
+                    {if $status.id_order_state == $data.extra.defaultStatuses.PS_OS_ERROR}{l s='(default)' mod='cawlop'}{/if}
                   </option>
                 {/foreach}
               </select>
@@ -212,7 +212,7 @@
           <div class="form-group">
             <label class="control-label col-lg-3" for="worldlineopAdvancedSettings[paymentSettings][successOrderStateId]">
             <span>
-              {l s='Pending payment status mapping' mod='worldlineop'}
+              {l s='Pending payment status mapping' mod='cawlop'}
             </span>
             </label>
             <div class="col-lg-9">
@@ -221,7 +221,7 @@
                   <option value="{$status.id_order_state|intval}"
                           {if $status.id_order_state == $data.advancedSettings.paymentSettings.pendingOrderStateId}selected{/if}>
                     {$status.name|escape:'html':'UTF-8'}
-                    {if $status.id_order_state == $data.extra.defaultStatuses.WOP_PENDING_ORDER_STATUS_ID}{l s='(default)' mod='worldlineop'}{/if}
+                    {if $status.id_order_state == $data.extra.defaultStatuses.WOP_PENDING_ORDER_STATUS_ID}{l s='(default)' mod='cawlop'}{/if}
                   </option>
                 {/foreach}
               </select>
@@ -232,7 +232,7 @@
           <div class="form-group">
             <label class="control-label col-lg-3" for="worldlineopAdvancedSettings[paymentSettings][safetyDelay]">
           <span>
-            {l s='Order validation safety delay' mod='worldlineop'}
+            {l s='Order validation safety delay' mod='cawlop'}
           </span>
             </label>
             <div class="col-lg-9">
@@ -240,14 +240,14 @@
                 {for $seconds=$data.extra.const.SAFETY_DELAY_MIN to $data.extra.const.SAFETY_DELAY_MAX}
                   <option value="{$seconds|intval}"
                           {if $data.advancedSettings.paymentSettings.safetyDelay == $seconds}selected{/if}>
-                    {$seconds|intval} {l s='seconds' mod='worldlineop'}
+                    {$seconds|intval} {l s='seconds' mod='cawlop'}
                   </option>
                 {/for}
               </select>
             </div>
             <div class="col-lg-9 col-lg-offset-3">
               <div class="help-block">
-                  {l s='If you use the split order feature, activate this option to gracefully handle the duplication of the order by retaining any incoming webhook for the determined period' mod='worldlineop'}
+                  {l s='If you use the split order feature, activate this option to gracefully handle the duplication of the order by retaining any incoming webhook for the determined period' mod='cawlop'}
               </div>
             </div>
           </div>
@@ -256,7 +256,7 @@
           <div class="form-group">
             <label class="control-label col-lg-3" for="worldlineopAdvancedSettings[paymentSettings][retentionHours]">
             <span>
-              {l s='Release inventory from Pending payment orders after' mod='worldlineop'}
+              {l s='Release inventory from Pending payment orders after' mod='cawlop'}
             </span>
             </label>
             <div class="col-lg-9">
@@ -265,7 +265,7 @@
                   {if $hours % 3 === 0}
                     <option value="{$hours|intval}"
                             {if $data.advancedSettings.paymentSettings.retentionHours == $hours}selected{/if}>
-                      {$hours|intval} {l s='hours' mod='worldlineop'}
+                      {$hours|intval} {l s='hours' mod='cawlop'}
                     </option>
                   {/if}
                 {/for}
@@ -277,18 +277,18 @@
           <div class="form-group">
             <label class="control-label col-lg-3">
             <span>
-              {l s='Pending cronjob' mod='worldlineop'}
+              {l s='Pending cronjob' mod='cawlop'}
             </span>
             </label>
             <div class="col-lg-9">
-              <p class="form-control-static">{l s='Cron command example to run process every hour:' mod='worldlineop'}</p>
+              <p class="form-control-static">{l s='Cron command example to run process every hour:' mod='cawlop'}</p>
               <p><code>{$data.extra.path.controllers.pendingCron|escape:'htmlall':'UTF-8'}</code></p>
             </div>
           </div>
           <!-- /Pending cronjob -->
           <!-- Switch Endpoint -->
           <div class="form-group form-group-h2 js-worldlineop-switch-endpoint-block">
-            <label class="control-label col-lg-3 ">{l s='Switch endpoint' mod='worldlineop'}</label>
+            <label class="control-label col-lg-3 ">{l s='Switch endpoint' mod='cawlop'}</label>
             <div class="col-lg-9 js-worldlineop-switch-endpoint-switch">
             <span class="switch prestashop-switch fixed-width-sm">
               <input type="radio"
@@ -296,13 +296,13 @@
                      name="worldlineopAdvancedSettings[switchEndpoint]"
                      id="worldlineopAdvancedSettings_switchEndpoint_on"
                      {if $data.advancedSettings.switchEndpoint === true}checked="checked"{/if}>
-              <label for="worldlineopAdvancedSettings_switchEndpoint_on">{l s='Yes' mod='worldlineop'}</label>
+              <label for="worldlineopAdvancedSettings_switchEndpoint_on">{l s='Yes' mod='cawlop'}</label>
               <input type="radio"
                      value="0"
                      name="worldlineopAdvancedSettings[switchEndpoint]"
                      id="worldlineopAdvancedSettings_switchEndpoint_off"
                      {if $data.advancedSettings.switchEndpoint != true}checked="checked"{/if}>
-              <label for="worldlineopAdvancedSettings_switchEndpoint_off">{l s='No' mod='worldlineop'}</label>
+              <label for="worldlineopAdvancedSettings_switchEndpoint_off">{l s='No' mod='cawlop'}</label>
               <a class="slide-button btn"></a>
             </span>
             </div>
@@ -313,7 +313,7 @@
             <!-- Test Endpoint -->
             <div class="form-group">
               <label class="control-label col-lg-3">
-                <span>{l s='Test Endpoint' mod='worldlineop'}</span>
+                <span>{l s='Test Endpoint' mod='cawlop'}</span>
               </label>
               <div class="col-lg-9">
                 <div class="fixed-width-xxl">
@@ -328,7 +328,7 @@
             <!-- Prod Endpoint -->
             <div class="form-group">
               <label class="control-label col-lg-3">
-                <span>{l s='Prod Endpoint' mod='worldlineop'}</span>
+                <span>{l s='Prod Endpoint' mod='cawlop'}</span>
               </label>
               <div class="col-lg-9">
                 <div class="fixed-width-xxl">
@@ -343,13 +343,13 @@
           </div>
         </div>
         <div class="form-group form-group-h2">
-          <h2 class="col-lg-3">{l s='Checkout Flow Modifications' mod='worldlineop'}</h2>
+          <h2 class="col-lg-3">{l s='Checkout Flow Modifications' mod='cawlop'}</h2>
           <div class="col-lg-9"></div>
         </div>
         <!-- Group cards -->
         <div class="form-group">
           <label class="control-label col-lg-3 ">
-              {l s='Group payment options by card' mod='worldlineop'}
+              {l s='Group payment options by card' mod='cawlop'}
           </label>
           <div class="col-lg-9">
             <span class="switch prestashop-switch fixed-width-sm">
@@ -358,19 +358,19 @@
                      name="worldlineopAdvancedSettings[groupCardPaymentOptions]"
                      id="worldlineopAdvancedSettings_groupCardPaymentOptions_on"
                      {if $data.advancedSettings.groupCardPaymentOptions === true}checked="checked"{/if}>
-              <label for="worldlineopAdvancedSettings_groupCardPaymentOptions_on">{l s='Yes' mod='worldlineop'}</label>
+              <label for="worldlineopAdvancedSettings_groupCardPaymentOptions_on">{l s='Yes' mod='cawlop'}</label>
               <input type="radio"
                      value="0"
                      name="worldlineopAdvancedSettings[groupCardPaymentOptions]"
                      id="worldlineopAdvancedSettings_groupCardPaymentOptions_off"
                      {if $data.advancedSettings.groupCardPaymentOptions != true}checked="checked"{/if}>
-              <label for="worldlineopAdvancedSettings_groupCardPaymentOptions_off">{l s='No' mod='worldlineop'}</label>
+              <label for="worldlineopAdvancedSettings_groupCardPaymentOptions_off">{l s='No' mod='cawlop'}</label>
               <a class="slide-button btn"></a>
             </span>
           </div>
           <div class="col-lg-9 col-lg-offset-3">
             <div class="help-block">
-              {l s='Only for the generic payment option. If you choose to group payment options by card, the customer will have one unique choice for cards instead of x choices.' mod='worldlineop'}
+              {l s='Only for the generic payment option. If you choose to group payment options by card, the customer will have one unique choice for cards instead of x choices.' mod='cawlop'}
               <span></span>
             </div>
           </div>
@@ -378,12 +378,12 @@
         <!-- /Group cards -->
         <div class="form-group form-group-h2">
           <div class="col-lg-3"></div>
-          <h4 class="col-lg-9">{l s='UE specific settings' mod='worldlineop'}</h4>
+          <h4 class="col-lg-9">{l s='UE specific settings' mod='cawlop'}</h4>
         </div>
         <!-- Force 3DsV2 -->
         <div class="form-group js-worldlineop-switch-force-3ds-block">
           <label class="control-label col-lg-3 ">
-              {l s='Force 3DsV2' mod='worldlineop'}
+              {l s='Force 3DsV2' mod='cawlop'}
           </label>
           <div class="col-lg-9 js-worldlineop-switch-force-3ds-switch">
               <span class="switch prestashop-switch fixed-width-sm">
@@ -392,19 +392,19 @@
                        name="worldlineopAdvancedSettings[force3DsV2]"
                        id="worldlineopAdvancedSettings_force3DsV2_on"
                        {if $data.advancedSettings.force3DsV2 === true}checked="checked"{/if}>
-                <label for="worldlineopAdvancedSettings_force3DsV2_on">{l s='Yes' mod='worldlineop'}</label>
+                <label for="worldlineopAdvancedSettings_force3DsV2_on">{l s='Yes' mod='cawlop'}</label>
                 <input type="radio"
                        value="0"
                        name="worldlineopAdvancedSettings[force3DsV2]"
                        id="worldlineopAdvancedSettings_force3DsV2_off"
                        {if $data.advancedSettings.force3DsV2 != true}checked="checked"{/if}>
-                <label for="worldlineopAdvancedSettings_force3DsV2_off">{l s='No' mod='worldlineop'}</label>
+                <label for="worldlineopAdvancedSettings_force3DsV2_off">{l s='No' mod='cawlop'}</label>
                 <a class="slide-button btn"></a>
               </span>
           </div>
           <div class="col-lg-9 col-lg-offset-3">
             <div class="help-block">
-                {l s='It is mandatory to enforce 3DsV2 in Europe, but can be turned off for other geographies' mod='worldlineop'}
+                {l s='It is mandatory to enforce 3DsV2 in Europe, but can be turned off for other geographies' mod='cawlop'}
             </div>
           </div>
         </div>
@@ -413,7 +413,7 @@
           <!-- Enforce 3DS -->
           <div class="form-group js-worldlineop-enforce-challenge-block">
             <label class="control-label col-lg-3 ">
-              {l s='Request challenge on all cards transactions' mod='worldlineop'}
+              {l s='Request challenge on all cards transactions' mod='cawlop'}
             </label>
             <div class="col-lg-9 js-worldlineop-enforce-challenge-switch">
               <span class="switch prestashop-switch fixed-width-sm">
@@ -422,13 +422,13 @@
                        name="worldlineopAdvancedSettings[enforce3DS]"
                        id="worldlineopAdvancedSettings_enforce3DS_on"
                        {if $data.advancedSettings.enforce3DS === true}checked="checked"{/if}>
-                <label for="worldlineopAdvancedSettings_enforce3DS_on">{l s='Yes' mod='worldlineop'}</label>
+                <label for="worldlineopAdvancedSettings_enforce3DS_on">{l s='Yes' mod='cawlop'}</label>
                 <input type="radio"
                        value="0"
                        name="worldlineopAdvancedSettings[enforce3DS]"
                        id="worldlineopAdvancedSettings_enforce3DS_off"
                        {if $data.advancedSettings.enforce3DS != true}checked="checked"{/if}>
-                <label for="worldlineopAdvancedSettings_enforce3DS_off">{l s='No' mod='worldlineop'}</label>
+                <label for="worldlineopAdvancedSettings_enforce3DS_off">{l s='No' mod='cawlop'}</label>
                 <a class="slide-button btn"></a>
               </span>
             </div>
@@ -441,7 +441,7 @@
           <!-- 3DS Exemption -->
           <div class="form-group js-worldlineop-3ds-exemption-block">
             <label class="control-label col-lg-3 ">
-                {l s='Exempt transactions from 3DS' mod='worldlineop'}
+                {l s='Exempt transactions from 3DS' mod='cawlop'}
             </label>
             <div class="col-lg-9">
               <span class="switch prestashop-switch fixed-width-sm">
@@ -450,19 +450,19 @@
                        name="worldlineopAdvancedSettings[threeDSExempted]"
                        id="worldlineopAdvancedSettings_threeDSExempted_on"
                        {if $data.advancedSettings.threeDSExempted === true}checked="checked"{/if}>
-                <label for="worldlineopAdvancedSettings_threeDSExempted_on">{l s='Yes' mod='worldlineop'}</label>
+                <label for="worldlineopAdvancedSettings_threeDSExempted_on">{l s='Yes' mod='cawlop'}</label>
                 <input type="radio"
                        value="0"
                        name="worldlineopAdvancedSettings[threeDSExempted]"
                        id="worldlineopAdvancedSettings_threeDSExempted_off"
                        {if $data.advancedSettings.threeDSExempted != true}checked="checked"{/if}>
-                <label for="worldlineopAdvancedSettings_threeDSExempted_off">{l s='No' mod='worldlineop'}</label>
+                <label for="worldlineopAdvancedSettings_threeDSExempted_off">{l s='No' mod='cawlop'}</label>
                 <a class="slide-button btn"></a>
               </span>
             </div>
             <div class="col-lg-9 col-lg-offset-3">
               <div class="help-block">
-                  {l s='When enabled, transactions with an order amount < 30 EUR will be exempted from 3DS' mod='worldlineop'}
+                  {l s='When enabled, transactions with an order amount < 30 EUR will be exempted from 3DS' mod='cawlop'}
                 <span></span>
               </div>
             </div>
@@ -471,12 +471,12 @@
         </div>
         <div class="form-group form-group-h2">
           <div class="col-lg-3"></div>
-          <h4 class="col-lg-9">{l s='Non-UE specific settings' mod='worldlineop'}</h4>
+          <h4 class="col-lg-9">{l s='Non-UE specific settings' mod='cawlop'}</h4>
         </div>
         <!-- Surcharging -->
         <div class="form-group">
           <label class="control-label col-lg-3 ">
-              {l s='Enable surcharging' mod='worldlineop'}
+              {l s='Enable surcharging' mod='cawlop'}
           </label>
           <div class="col-lg-9">
             <span class="switch prestashop-switch fixed-width-sm">
@@ -485,19 +485,19 @@
                      name="worldlineopAdvancedSettings[surchargingEnabled]"
                      id="worldlineopAdvancedSettings_surchargingEnabled_on"
                      {if $data.advancedSettings.surchargingEnabled === true}checked="checked"{/if}>
-              <label for="worldlineopAdvancedSettings_surchargingEnabled_on">{l s='Yes' mod='worldlineop'}</label>
+              <label for="worldlineopAdvancedSettings_surchargingEnabled_on">{l s='Yes' mod='cawlop'}</label>
               <input type="radio"
                      value="0"
                      name="worldlineopAdvancedSettings[surchargingEnabled]"
                      id="worldlineopAdvancedSettings_surchargingEnabled_off"
                      {if $data.advancedSettings.surchargingEnabled != true}checked="checked"{/if}>
-              <label for="worldlineopAdvancedSettings_surchargingEnabled_off">{l s='No' mod='worldlineop'}</label>
+              <label for="worldlineopAdvancedSettings_surchargingEnabled_off">{l s='No' mod='cawlop'}</label>
               <a class="slide-button btn"></a>
             </span>
           </div>
           <div class="col-lg-9 col-lg-offset-3">
             <div class="help-block">
-              {l s='When surcharging is enabled, extra fees related to credit card organizations will be supported by your customers' mod='worldlineop'}
+              {l s='When surcharging is enabled, extra fees related to credit card organizations will be supported by your customers' mod='cawlop'}
               <span></span>
             </div>
           </div>
@@ -509,7 +509,7 @@
     </div>
     <div class="panel-footer">
       <button type="submit" class="btn btn-default pull-right" name="submitSaveAdvancedSettingsForm">
-        <i class="process-icon-save"></i> {l s='Save' mod='worldlineop'}
+        <i class="process-icon-save"></i> {l s='Save' mod='cawlop'}
       </button>
     </div>
   </form>

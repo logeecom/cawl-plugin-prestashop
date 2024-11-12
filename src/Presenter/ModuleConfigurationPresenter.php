@@ -15,7 +15,7 @@
 namespace WorldlineOP\PrestaShop\Presenter;
 
 use OrderState;
-use Worldlineop;
+use Cawlop;
 use WorldlineOP\PrestaShop\Configuration\Entity\AccountSettings;
 use WorldlineOP\PrestaShop\Configuration\Entity\PaymentSettings;
 use WorldlineOP\PrestaShop\Configuration\Loader\SettingsLoader;
@@ -32,16 +32,16 @@ class ModuleConfigurationPresenter implements PresenterInterface
     /** @var SettingsLoader */
     private $settingsLoader;
 
-    /** @var Worldlineop */
+    /** @var Cawlop */
     private $module;
 
     /**
      * ModuleConfigurationPresenter constructor.
      *
-     * @param Worldlineop $module
+     * @param Cawlop $module
      * @param SettingsLoader $settingsLoader
      */
-    public function __construct(Worldlineop $module, SettingsLoader $settingsLoader)
+    public function __construct(Cawlop $module, SettingsLoader $settingsLoader)
     {
         $this->module = $module;
         $this->settingsLoader = $settingsLoader;

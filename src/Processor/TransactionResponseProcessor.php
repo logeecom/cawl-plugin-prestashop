@@ -18,7 +18,7 @@ use Context;
 use Order;
 use Symfony\Component\Lock\Factory;
 use Symfony\Component\Lock\Store\FlockStore;
-use Worldlineop;
+use Cawlop;
 use WorldlineOP\PrestaShop\Logger\LoggerFactory;
 use WorldlineOP\PrestaShop\Presenter\TransactionPresented;
 use WorldlineOP\PrestaShop\Repository\TokenRepository;
@@ -31,7 +31,7 @@ use WorldlineopTransaction;
  */
 class TransactionResponseProcessor
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     private $module;
 
     /** @var \Monolog\Logger */
@@ -40,10 +40,10 @@ class TransactionResponseProcessor
     /**
      * TransactionResponseProcessor constructor.
      *
-     * @param Worldlineop $module
+     * @param Cawlop $module
      * @param LoggerFactory $loggerFactory
      */
-    public function __construct(Worldlineop $module, LoggerFactory $loggerFactory)
+    public function __construct(Cawlop $module, LoggerFactory $loggerFactory)
     {
         $this->module = $module;
         $this->logger = $loggerFactory->setChannel('TransactionProcessor');
@@ -90,7 +90,7 @@ class TransactionResponseProcessor
                 foreach ($orderIds as $idOrder) {
                     $this->logger->debug(sprintf('Saving transaction for order %d', $idOrder));
                     /** @var \WorldlineOP\PrestaShop\Repository\TransactionRepository $transactionRepository */
-                    $transactionRepository = $this->module->getService('worldlineop.repository.transaction');
+                    $transactionRepository = $this->module->getService('cawlop.repository.transaction');
                     $transaction = new WorldlineopTransaction();
                     $transaction->reference = pSQL($presentedData->transaction['merchantReference']);
                     $transaction->id_order = (int) $idOrder;
@@ -137,7 +137,7 @@ class TransactionResponseProcessor
         }
         if (isset($presentedData->token['needSave']) && $presentedData->token['needSave']) {
             /** @var TokenRepository $tokenRepository */
-            $tokenRepository = $this->module->getService('worldlineop.repository.token');
+            $tokenRepository = $this->module->getService('cawlop.repository.token');
             $token = $tokenRepository->findByCustomerIdToken(
                 $presentedData->cardDetails['idCustomer'],
                 $presentedData->token['value']

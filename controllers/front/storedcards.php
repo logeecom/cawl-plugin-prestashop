@@ -16,11 +16,11 @@ if (!defined('_PS_VERSION_')) {
 }
 
 /**
- * Class WorldlineopStoredCardsModuleFrontController
+ * Class CawlopStoredCardsModuleFrontController
  */
-class WorldlineopStoredCardsModuleFrontController extends ModuleFrontController
+class CawlopStoredCardsModuleFrontController extends ModuleFrontController
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     /** @var bool */
@@ -35,19 +35,19 @@ class WorldlineopStoredCardsModuleFrontController extends ModuleFrontController
     public function initContent()
     {
         /** @var \WorldlineOP\PrestaShop\Logger\LoggerFactory $loggerFactory */
-        $loggerFactory = $this->module->getService('worldlineop.logger.factory');
+        $loggerFactory = $this->module->getService('cawlop.logger.factory');
         $this->logger = $loggerFactory->setChannel('StoredCards');
         if ($this->redirectStoredCards) {
-            $this->redirectWithNotifications($this->context->link->getModuleLink('worldlineop', 'storedcards', []));
+            $this->redirectWithNotifications($this->context->link->getModuleLink('cawlop', 'storedcards', []));
         }
         parent::initContent();
         /** @var \WorldlineOP\PrestaShop\Presenter\StoredCardsPresenter $storedCardsPresenter */
-        $storedCardsPresenter = $this->module->getService('worldlineop.storedcards.presenter');
+        $storedCardsPresenter = $this->module->getService('cawlop.storedcards.presenter');
         $this->context->smarty->assign([
             'stored_cards' => $storedCardsPresenter->present(),
         ]);
 
-        $this->setTemplate('module:worldlineop/views/templates/front/storedcards.tpl');
+        $this->setTemplate('module:cawlop/views/templates/front/storedcards.tpl');
     }
 
     /**
@@ -90,7 +90,7 @@ class WorldlineopStoredCardsModuleFrontController extends ModuleFrontController
             return false;
         }
         /** @var \WorldlineOP\PrestaShop\Repository\TokenRepository $tokenRepository */
-        $tokenRepository = $this->module->getService('worldlineop.repository.token');
+        $tokenRepository = $this->module->getService('cawlop.repository.token');
         $storedCard = $tokenRepository->findById((int) $idStoreCard);
         if (false === $storedCard
             || $storedCard->id_customer != $this->context->customer->id
@@ -102,7 +102,7 @@ class WorldlineopStoredCardsModuleFrontController extends ModuleFrontController
         }
 
         /** @var \OnlinePayments\Sdk\Merchant\MerchantClient $merchantClient */
-        $merchantClient = $this->module->getService('worldlineop.sdk.client');
+        $merchantClient = $this->module->getService('cawlop.sdk.client');
         try {
             $merchantClient->tokens()->deleteToken($storedCard->value);
             $delete = $tokenRepository->delete($storedCard);

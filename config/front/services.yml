@@ -4,38 +4,38 @@ imports:
 
 services:
 
-  worldlineop.payment.presenter:
+  cawlop.payment.presenter:
     class: 'WorldlineOP\PrestaShop\Presenter\PaymentOptionsPresenter'
     public: true
     arguments:
-      - '@worldlineop.module'
-      - '@worldlineop.settings'
-      - '@worldlineop.context'
+      - '@cawlop.module'
+      - '@cawlop.settings'
+      - '@cawlop.context'
 
-  worldlineop.repository.hosted_checkout:
+  cawlop.repository.hosted_checkout:
     class: 'WorldlineOP\PrestaShop\Repository\HostedCheckoutRepository'
     public: true
 
-  worldlineop.repository.created_payment:
+  cawlop.repository.created_payment:
     class: 'WorldlineOP\PrestaShop\Repository\CreatedPaymentRepository'
     public: true
 
-  worldlineop.checksum.address:
+  cawlop.checksum.address:
     class: 'AddressChecksum'
     public: true
 
-  worldlineop.checksum.cart:
+  cawlop.checksum.cart:
     class: 'WorldlineopCartChecksum'
     public: true
     arguments:
-      - '@worldlineop.checksum.address'
+      - '@cawlop.checksum.address'
 
-  worldlineop.storedcards.presenter:
+  cawlop.storedcards.presenter:
     class: 'WorldlineOP\PrestaShop\Presenter\StoredCardsPresenter'
     public: true
     arguments:
-      - '@worldlineop.module'
-      - '@worldlineop.context'
-      - '@worldlineop.sdk.client'
-      - '@worldlineop.repository.token'
+      - '@cawlop.module'
+      - '@cawlop.context'
+      - '@cawlop.sdk.client'
+      - '@cawlop.repository.token'
 

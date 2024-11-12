@@ -14,20 +14,20 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h2>{l s='Gift card specific configuration' mod='worldlineop'}</h2>
-    <p class="subtitle">{l s='Please configure this section in case you accept gift cards as payment methods with Worldline Online Payments' mod='worldlineop'}</p>
+    <h2>{l s='Gift card specific configuration' mod='cawlop'}</h2>
+    <p class="subtitle">{l s='Please configure this section in case you accept gift cards as payment methods with Cawl Online Payments' mod='cawlop'}</p>
   </div>
 </div>
 <div class="row form-group">
   <div class="col-md-8">
-    <label for="worldlineopGiftCard[type]" class="form-control-label">{l s='Product type' mod='worldlineop'}</label>
+    <label for="worldlineopGiftCard[type]" class="form-control-label">{l s='Product type' mod='cawlop'}</label>
     <select id="worldlineopGiftCard[type]"
             name="worldlineopGiftCard[type]"
             class="custom-select custom-select">
-      <option {if $worldlineopGCSelectedType == $worldlineopGCTypeNone}selected="selected"{/if} value="{$worldlineopGCTypeNone|escape:'htmlall':'UTF-8'}">{l s='None' mod='worldlineop'}</option>
-      <option {if $worldlineopGCSelectedType == $worldlineopGCTypeFoodDrink}selected="selected"{/if} value="{$worldlineopGCTypeFoodDrink|escape:'htmlall':'UTF-8'}">{l s='Food & Drink' mod='worldlineop'}</option>
-      <option {if $worldlineopGCSelectedType == $worldlineopGCTypeHomeGarden}selected="selected"{/if} value="{$worldlineopGCTypeHomeGarden|escape:'htmlall':'UTF-8'}">{l s='Home & Garden' mod='worldlineop'}</option>
-      <option {if $worldlineopGCSelectedType == $worldlineopGCTypeGiftFlowers}selected="selected"{/if} value="{$worldlineopGCTypeGiftFlowers|escape:'htmlall':'UTF-8'}">{l s='Gift & Flowers' mod='worldlineop'}</option>
+      <option {if $worldlineopGCSelectedType == $worldlineopGCTypeNone}selected="selected"{/if} value="{$worldlineopGCTypeNone|escape:'htmlall':'UTF-8'}">{l s='None' mod='cawlop'}</option>
+      <option {if $worldlineopGCSelectedType == $worldlineopGCTypeFoodDrink}selected="selected"{/if} value="{$worldlineopGCTypeFoodDrink|escape:'htmlall':'UTF-8'}">{l s='Food & Drink' mod='cawlop'}</option>
+      <option {if $worldlineopGCSelectedType == $worldlineopGCTypeHomeGarden}selected="selected"{/if} value="{$worldlineopGCTypeHomeGarden|escape:'htmlall':'UTF-8'}">{l s='Home & Garden' mod='cawlop'}</option>
+      <option {if $worldlineopGCSelectedType == $worldlineopGCTypeGiftFlowers}selected="selected"{/if} value="{$worldlineopGCTypeGiftFlowers|escape:'htmlall':'UTF-8'}">{l s='Gift & Flowers' mod='cawlop'}</option>
     </select>
     <input type="hidden" name="worldlineopGiftCard[form]" value="1" />
   </div>

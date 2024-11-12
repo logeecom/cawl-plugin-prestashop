@@ -15,7 +15,7 @@
 {extends file='page.tpl'}
 
 {block name='page_title'}
-  {l s='My stored cards' mod='worldlineop'}
+  {l s='My stored cards' mod='cawlop'}
 {/block}
 
 {block name='page_content_container'}
@@ -37,7 +37,7 @@
           <div class="card-action">
             <a href="{$link->getModuleLink('worldlineop', 'storedcards', ['delete' => 1, 'token' => $token, 'id_token' => $stored_card.id])}">
               <span class="material-icons">delete</span>
-              {l s='Delete' mod='worldlineop'}
+              {l s='Delete' mod='cawlop'}
             </a>
           </div>
         </div>
@@ -45,7 +45,7 @@
     </div>
   {else}
     <div class="alert alert-warning">
-      {l s='You don\'t have any stored cards' mod='worldlineop'}
+      {l s='You don\'t have any stored cards' mod='cawlop'}
     </div>
   {/if}
 {/block}

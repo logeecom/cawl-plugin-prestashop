@@ -25,15 +25,15 @@ use WorldlineOP\PrestaShop\Configuration\Entity\Settings;
 use WorldlineOP\PrestaShop\Exception\ExceptionList;
 
 /**
- * Class AdminWorldlineopConfigurationController
+ * Class AdminCawlopConfigurationController
  */
-class AdminWorldlineopConfigurationController extends ModuleAdminController
+class AdminCawlopConfigurationController extends ModuleAdminController
 {
     const TAB_ACCOUNT = 'account';
     const TAB_ADVANCED_SETTINGS = 'advancedSettings';
     const TAB_PAYMENT_METHODS = 'paymentMethods';
 
-    /** @var Worldlineop */
+    /** @var Cawlop */
     public $module;
 
     /** @var string */
@@ -43,7 +43,7 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
     private $postedData;
 
     /**
-     * AdminWorldlineopConfigurationController constructor.
+     * AdminCawlopConfigurationController constructor.
      *
      * @throws PrestaShopException
      */
@@ -62,13 +62,13 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
         parent::setMedia($isNewTheme);
         $this->context->controller->addCSS([$this->module->getLocalPath() . '/views/css/config.css']);
         /** @var \WorldlineOP\PrestaShop\Configuration\Entity\Settings $settings */
-        $settings = $this->module->getService('worldlineop.settings');
+        $settings = $this->module->getService('cawlop.settings');
         // @formatter:off
         Media::addJsDef([
-            'worldlineopAjaxToken' => Tools::getAdminTokenLite('AdminWorldlineopAjax'),
-            'genericErrorMessage' => $this->module->l('An error occurred during the process, please try again', 'AdminWorldlineopConfigurationController'),
+            'worldlineopAjaxToken' => Tools::getAdminTokenLite('AdminCawlopAjax'),
+            'genericErrorMessage' => $this->module->l('An error occurred during the process, please try again', 'AdminCawlopConfigurationController'),
             'showWhatsNew' => $settings->advancedSettings->displayWhatsNew === true,
-            'copyMessage' => $this->module->l('Copied!', 'AdminWorldlineopConfigurationController'),
+            'copyMessage' => $this->module->l('Copied!', 'AdminCawlopConfigurationController'),
         ]);
         // @formatter:on
     }
@@ -82,7 +82,7 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
         $this->modals[] = [
             'modal_id' => 'worldlineop-modal-whatsnew',
             'modal_class' => 'modal-lg',
-            'modal_title' => $this->module->l('Latest version - What\'s new?', 'AdminWorldlineopConfigurationController'),
+            'modal_title' => $this->module->l('Latest version - What\'s new?', 'AdminCawlopConfigurationController'),
             'modal_content' => $this->createTemplate('modal/_loading.tpl')->fetch(),
         ];
         // @formatter:on
@@ -95,7 +95,7 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
     {
         $this->setModals();
         /** @var \WorldlineOP\PrestaShop\Presenter\ModuleConfigurationPresenter $presenter */
-        $presenter = $this->module->getService('worldlineop.settings.presenter');
+        $presenter = $this->module->getService('cawlop.settings.presenter');
         $data = $presenter->present();
         $data['activeTab'] = $this->activeTab;
         if (!empty($this->postedData)) {
@@ -131,7 +131,7 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
     public function saveAccount()
     {
         /** @var \WorldlineOP\PrestaShop\Configuration\Updater\AccountSettingsUpdater $updater */
-        $updater = $this->module->getService('worldlineop.settings.account.updater');
+        $updater = $this->module->getService('cawlop.settings.account.updater');
         $form = Tools::getValue('worldlineopAccountSettings');
         try {
             $updater->update($form);
@@ -147,7 +147,7 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
             return;
         }
         // @formatter:off
-        $this->confirmations[] = $this->module->l('Account settings saved successfully.', 'AdminWorldlineopConfigurationController');
+        $this->confirmations[] = $this->module->l('Account settings saved successfully.', 'AdminCawlopConfigurationController');
         // @formatter:on
     }
 
@@ -158,12 +158,12 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
     {
         $form = Tools::getValue('worldlineopAccountSettings');
         /** @var \WorldlineOP\PrestaShop\Configuration\Updater\AccountSettingsUpdater $accountUpdater */
-        $accountUpdater = $this->module->getService('worldlineop.settings.account.updater');
+        $accountUpdater = $this->module->getService('cawlop.settings.account.updater');
         $form = $accountUpdater->forceResolve($form);
         $accountTested = new AccountSettings();
         $accountTested = $accountUpdater->forceDenormalize($form, $accountTested);
         /** @var \WorldlineOP\PrestaShop\Configuration\Entity\Settings $savedSettings */
-        $savedSettings = $this->module->getService('worldlineop.settings');
+        $savedSettings = $this->module->getService('cawlop.settings');
         $settings = new Settings();
         $settings->accountSettings = $accountTested;
         $settings->advancedSettings = $savedSettings->advancedSettings;
@@ -187,13 +187,13 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
         }
         if ($testResponse->getResult() !== 'OK') {
             // @formatter:off
-            $this->errors[] = $this->module->l('Please verify your credentials', 'AdminWorldlineopConfigurationController');
+            $this->errors[] = $this->module->l('Please verify your credentials', 'AdminCawlopConfigurationController');
             // @formatter:on
 
             return false;
         } else {
             // @formatter:off
-            $this->confirmations[] = $this->module->l('Account credentials are valid.', 'AdminWorldlineopConfigurationController');
+            $this->confirmations[] = $this->module->l('Account credentials are valid.', 'AdminCawlopConfigurationController');
             // @formatter:on
 
             return true;
@@ -206,9 +206,9 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
     public function updatePaymentMethods()
     {
         /** @var \WorldlineOP\PrestaShop\Configuration\Product\GetProductsRequest $getProductsService */
-        $getProductsService = $this->module->getService('worldlineop.settings.get_products');
+        $getProductsService = $this->module->getService('cawlop.settings.get_products');
         /** @var \WorldlineOP\PrestaShop\Configuration\Updater\PaymentMethodsSettingsUpdater $updater */
-        $updater = $this->module->getService('worldlineop.settings.payment_methods.updater');
+        $updater = $this->module->getService('cawlop.settings.payment_methods.updater');
         try {
             $iframeProducts = $getProductsService->request('iframe');
             $redirectProducts = $getProductsService->request('redirect');
@@ -225,7 +225,7 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
     {
         $this->activeTab = self::TAB_ADVANCED_SETTINGS;
         /** @var \WorldlineOP\PrestaShop\Configuration\Updater\AdvancedSettingsUpdater $updater */
-        $updater = $this->module->getService('worldlineop.settings.advanced_settings.updater');
+        $updater = $this->module->getService('cawlop.settings.advanced_settings.updater');
         $form = Tools::getValue('worldlineopAdvancedSettings');
         try {
             $updater->update($form);
@@ -235,7 +235,7 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
             return;
         }
         // @formatter:off
-        $this->confirmations[] = $this->module->l('Advanced settings saved successfully', 'AdminWorldlineopConfigurationController');
+        $this->confirmations[] = $this->module->l('Advanced settings saved successfully', 'AdminCawlopConfigurationController');
         // @formatter:on
     }
 
@@ -243,7 +243,7 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
     {
         $this->activeTab = self::TAB_PAYMENT_METHODS;
         /** @var \WorldlineOP\PrestaShop\Configuration\Updater\PaymentMethodsSettingsUpdater $updater */
-        $updater = $this->module->getService('worldlineop.settings.payment_methods.updater');
+        $updater = $this->module->getService('cawlop.settings.payment_methods.updater');
         $form = Tools::getValue('worldlineopPaymentMethodsSettings');
         try {
             $updater->update($form);
@@ -257,7 +257,7 @@ class AdminWorldlineopConfigurationController extends ModuleAdminController
             $this->errors[] = $e->getMessage();
         }
         // @formatter:off
-        $this->confirmations[] = $this->module->l('Payment methods settings saved successfully', 'AdminWorldlineopConfigurationController');
+        $this->confirmations[] = $this->module->l('Payment methods settings saved successfully', 'AdminCawlopConfigurationController');
         // @formatter:on
     }
 }

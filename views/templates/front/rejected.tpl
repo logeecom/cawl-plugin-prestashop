@@ -17,11 +17,11 @@
 {block name='page_content_container'}
   <div id="worldlineop-rejected-message">
     <div class="alert alert-warning">
-      <p>{l s='There was an issue with your payment, and you have not been charged.' mod='worldlineop'}</p>
+      <p>{l s='There was an issue with your payment, and you have not been charged.' mod='cawlop'}</p>
       <p>
-        {l s='Please double check your emails and click' mod='worldlineop'}
-        <a href="{$reorder_link}" >{l s='here' mod='worldlineop'}</a>
-        {l s='if you wish to re-order.' mod='worldlineop'}
+        {l s='Please double check your emails and click' mod='cawlop'}
+        <a href="{$reorder_link}" >{l s='here' mod='cawlop'}</a>
+        {l s='if you wish to re-order.' mod='cawlop'}
       </p>
     </div>
   </div>

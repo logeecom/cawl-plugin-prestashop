@@ -24,7 +24,7 @@
         <!-- Environment -->
         <div class="form-group js-worldlineop-env-block">
           <label class="control-label col-lg-3">
-            <span>{l s='Environment' mod='worldlineop'}</span>
+            <span>{l s='Environment' mod='cawlop'}</span>
           </label>
           <div class="col-lg-9 js-worldlineop-env-switch">
             <div class="radio">
@@ -34,7 +34,7 @@
                        id="worldlineop-mode-test"
                        value="{$data.extra.const.ACCOUNT_MODE_TEST|escape:'html':'UTF-8'}"
                        {if $data.accountSettings.environment != $data.extra.const.ACCOUNT_MODE_PROD}checked="checked"{/if}>
-                {l s='Test' mod='worldlineop'}
+                {l s='Test' mod='cawlop'}
               </label>
             </div>
             <div class="radio">
@@ -44,18 +44,18 @@
                        id="worldlineop-mode-prod"
                        value="{$data.extra.const.ACCOUNT_MODE_PROD|escape:'html':'UTF-8'}"
                        {if $data.accountSettings.environment == $data.extra.const.ACCOUNT_MODE_PROD}checked="checked"{/if}>
-                {l s='Production' mod='worldlineop'}
+                {l s='Production' mod='cawlop'}
               </label>
             </div>
           </div>
         </div>
         <!-- /Environment -->
         <div class="js-worldlineop-env-test-block">
-          <h2 class="col-lg-offset-3 col-lg-9">{l s='Test credentials' mod='worldlineop'}</h2>
+          <h2 class="col-lg-offset-3 col-lg-9">{l s='Test credentials' mod='cawlop'}</h2>
           <!-- Test PSPID -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Test PSPID' mod='worldlineop'}</span>
+              <span>{l s='Test PSPID' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -69,17 +69,17 @@
           <!-- /Test PSPID -->
           <div class="alert alert-info">
             <p class="text-info">
-              {l s='To retrieve the API Key and API secret in your PSPID, follow these steps:' mod='worldlineop'}
+              {l s='To retrieve the API Key and API secret in your PSPID, follow these steps:' mod='cawlop'}
             </p>
             <p class="text-info">
-              {l s='> Login to the Back Office. Go to Configuration > Technical information > Ingenico Direct Settings > Direct API Key' mod='worldlineop'}<br>
-              {l s='> If you have not configured anything yet, the screen shows "No API credentials found". To create both API Key and API Secret click on "GENERATE"' mod='worldlineop'}
+              {l s='> Login to the Back Office. Go to Configuration > Technical information > Ingenico Direct Settings > Direct API Key' mod='cawlop'}<br>
+              {l s='> If you have not configured anything yet, the screen shows "No API credentials found". To create both API Key and API Secret click on "GENERATE"' mod='cawlop'}
             </p>
           </div>
           <!-- Test API Key -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Test API Key' mod='worldlineop'}</span>
+              <span>{l s='Test API Key' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -94,7 +94,7 @@
           <!-- Test API Secret -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Test API Secret' mod='worldlineop'}</span>
+              <span>{l s='Test API Secret' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -108,24 +108,24 @@
           <!-- /Test API Secret -->
           <div class="alert alert-info">
             <p class="text-info">
-              {l s='To retrieve the webhooks credentials, login to the Back Office.' mod='worldlineop'}<br>
-              {l s='Go to Configuration > Technical information > Ingenico Direct settings > Webhooks Configuration and perform the following steps:' mod='worldlineop'}
+              {l s='To retrieve the webhooks credentials, login to the Back Office.' mod='cawlop'}<br>
+              {l s='Go to Configuration > Technical information > Ingenico Direct settings > Webhooks Configuration and perform the following steps:' mod='cawlop'}
             </p>
             <p class="text-info">
-              {l s='> Click on "GENERATE WEBHOOKS API KEY"' mod='worldlineop'}<br>
-              {l s='> Copy & Paste the WebhooksKeySecret immediately' mod='worldlineop'}<br>
-              {l s='> In "Endpoints URLs", paste the Webhooks URL of your store - see below' mod='worldlineop'}<br>
-              {l s='> Click on "SAVE" to confirm your settings' mod='worldlineop'}
+              {l s='> Click on "GENERATE WEBHOOKS API KEY"' mod='cawlop'}<br>
+              {l s='> Copy & Paste the WebhooksKeySecret immediately' mod='cawlop'}<br>
+              {l s='> In "Endpoints URLs", paste the Webhooks URL of your store - see below' mod='cawlop'}<br>
+              {l s='> Click on "SAVE" to confirm your settings' mod='cawlop'}
             </p>
             <p>
               <i class="icon icon-warning"></i>
-              {l s='If you have several shops & different credentials, please configure your Worldline portals for each shops/accounts.' mod='worldlineop'}
+              {l s='If you have several shops & different credentials, please configure your Cawl portals for each shops/accounts.' mod='cawlop'}
             </p>
           </div>
           <!-- Test Webhooks Key -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Test Webhooks Key' mod='worldlineop'}</span>
+              <span>{l s='Test Webhooks Key' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -140,7 +140,7 @@
           <!-- Test Webhooks Secret -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Test Webhooks Secret' mod='worldlineop'}</span>
+              <span>{l s='Test Webhooks Secret' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -154,11 +154,11 @@
         </div>
         <!-- /Test Webhooks Secret -->
         <div class="js-worldlineop-env-prod-block">
-          <h2 class="col-lg-offset-3 col-lg-9">{l s='Production credentials' mod='worldlineop'}</h2>
+          <h2 class="col-lg-offset-3 col-lg-9">{l s='Production credentials' mod='cawlop'}</h2>
           <!-- Prod PSPID -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Prod PSPID' mod='worldlineop'}</span>
+              <span>{l s='Prod PSPID' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -172,17 +172,17 @@
           <!-- /Prod PSPID -->
           <div class="alert alert-info">
             <p class="text-info">
-              {l s='To retrieve the API Key and API secret in your PSPID, follow these steps:' mod='worldlineop'}
+              {l s='To retrieve the API Key and API secret in your PSPID, follow these steps:' mod='cawlop'}
             </p>
             <p class="text-info">
-              {l s='> Login to the Back Office. Go to Configuration > Technical information > Ingenico Direct Settings > Direct API Key' mod='worldlineop'}<br>
-              {l s='> If you have not configured anything yet, the screen shows "No API credentials found". To create both API Key and API Secret click on "GENERATE"' mod='worldlineop'}
+              {l s='> Login to the Back Office. Go to Configuration > Technical information > Ingenico Direct Settings > Direct API Key' mod='cawlop'}<br>
+              {l s='> If you have not configured anything yet, the screen shows "No API credentials found". To create both API Key and API Secret click on "GENERATE"' mod='cawlop'}
             </p>
           </div>
           <!-- Prod API Key -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Prod API Key' mod='worldlineop'}</span>
+              <span>{l s='Prod API Key' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -197,7 +197,7 @@
           <!-- Prod API Secret -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Prod API Secret' mod='worldlineop'}</span>
+              <span>{l s='Prod API Secret' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -211,24 +211,24 @@
           <!-- /Prod API Secret -->
           <div class="alert alert-info">
             <p class="text-info">
-              {l s='To retrieve the webhooks credentials, login to the Back Office.' mod='worldlineop'}<br>
-              {l s='Go to Configuration > Technical information > Ingenico Direct settings > Webhooks Configuration and perform the following steps:' mod='worldlineop'}
+              {l s='To retrieve the webhooks credentials, login to the Back Office.' mod='cawlop'}<br>
+              {l s='Go to Configuration > Technical information > Ingenico Direct settings > Webhooks Configuration and perform the following steps:' mod='cawlop'}
             </p>
             <p class="text-info">
-              {l s='> Click on "GENERATE WEBHOOKS API KEY"' mod='worldlineop'}<br>
-              {l s='> Copy & Paste the WebhooksKeySecret immediately' mod='worldlineop'}<br>
-              {l s='> In "Endpoints URLs", paste the Webhooks URL of your store - see below' mod='worldlineop'}<br>
-              {l s='> Click on "SAVE" to confirm your settings' mod='worldlineop'}
+              {l s='> Click on "GENERATE WEBHOOKS API KEY"' mod='cawlop'}<br>
+              {l s='> Copy & Paste the WebhooksKeySecret immediately' mod='cawlop'}<br>
+              {l s='> In "Endpoints URLs", paste the Webhooks URL of your store - see below' mod='cawlop'}<br>
+              {l s='> Click on "SAVE" to confirm your settings' mod='cawlop'}
             </p>
             <p class="text-info">
               <i class="icon icon-warning"></i>
-              {l s='If you have several shops & different credentials, please configure your Worldline portals for each shops/accounts.' mod='worldlineop'}
+              {l s='If you have several shops & different credentials, please configure your Cawl portals for each shops/accounts.' mod='cawlop'}
             </p>
           </div>
           <!-- Prod Webhooks Key -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Prod Webhooks Key' mod='worldlineop'}</span>
+              <span>{l s='Prod Webhooks Key' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -243,7 +243,7 @@
           <!-- Prod Webhooks Secret -->
           <div class="form-group">
             <label class="control-label col-lg-3">
-              <span>{l s='Prod Webhooks Secret' mod='worldlineop'}</span>
+              <span>{l s='Prod Webhooks Secret' mod='cawlop'}</span>
             </label>
             <div class="col-lg-9">
               <div class="fixed-width-xxl">
@@ -259,7 +259,7 @@
         <!-- Webhooks URL -->
         <div class="form-group worldlineop-webhooks-block">
           <label class="control-label col-lg-3">
-            <span>{l s='Webhooks URL' mod='worldlineop'}</span>
+            <span>{l s='Webhooks URL' mod='cawlop'}</span>
           </label>
           <div class="col-lg-9">
             <div class="form-control-static">
@@ -269,7 +269,7 @@
           </div>
           <div class="col-lg-offset-3 col-lg-9">
             <div class="help-block">
-              <p>{l s='To avoid copy/paste issue, use the "copy" icon to copy the URL' mod='worldlineop'}</p>
+              <p>{l s='To avoid copy/paste issue, use the "copy" icon to copy the URL' mod='cawlop'}</p>
             </div>
           </div>
         </div>
@@ -279,10 +279,10 @@
     </div>
     <div class="panel-footer">
       <button type="submit" class="btn btn-default pull-right" name="submitSaveAccountForm">
-        <i class="process-icon-save"></i> {l s='Save' mod='worldlineop'}
+        <i class="process-icon-save"></i> {l s='Save' mod='cawlop'}
       </button>
       <button type="submit" class="btn btn-default pull-right" name="submitTestCredentialsForm">
-        <i class="process-icon-ok"></i> {l s='Save & Check credentials' mod='worldlineop'}
+        <i class="process-icon-ok"></i> {l s='Save & Check credentials' mod='cawlop'}
       </button>
     </div>
   </form>

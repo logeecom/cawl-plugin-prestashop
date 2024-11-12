@@ -20,7 +20,7 @@ use Country;
 use Currency;
 use OnlinePayments\Sdk\Merchant\MerchantClient;
 use OnlinePayments\Sdk\Merchant\Products\GetPaymentProductParams;
-use Worldlineop;
+use Cawlop;
 use WorldlineOP\PrestaShop\Repository\TokenRepository;
 
 /**
@@ -28,7 +28,7 @@ use WorldlineOP\PrestaShop\Repository\TokenRepository;
  */
 class StoredCardsPresenter implements PresenterInterface
 {
-    /** @var Worldlineop */
+    /** @var Cawlop */
     private $module;
 
     /** @var Context */
@@ -43,15 +43,15 @@ class StoredCardsPresenter implements PresenterInterface
     /**
      * StoredCardsPresenter constructor.
      *
-     * @param Worldlineop $module
+     * @param Cawlop $module
      * @param Context $context
      * @param MerchantClient $merchantClient
      * @param TokenRepository $tokenRepository
      */
     public function __construct(
-        Worldlineop $module,
-        Context $context,
-        MerchantClient $merchantClient,
+        Cawlop          $module,
+        Context         $context,
+        MerchantClient  $merchantClient,
         TokenRepository $tokenRepository
     ) {
         $this->module = $module;

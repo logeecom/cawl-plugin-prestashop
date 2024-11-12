@@ -183,7 +183,7 @@ $(document).ready(function () {
         }
 
         var data = {
-          controller: 'AdminWorldlineopAjax',
+          controller: 'AdminCawlopAjax',
           ajax: 1,
           token: worldlineopAjaxToken,
           action: 'toggleAdvSettings',
@@ -205,7 +205,7 @@ $(document).ready(function () {
         icon.toggleClass('icon-refresh icon-spinner icon-spin');
         WorldlineOP.el.redirectPaymentMethodsList.html('');
         var data = {
-          controller: 'AdminWorldlineopAjax',
+          controller: 'AdminCawlopAjax',
           ajax: 1,
           token: worldlineopAjaxToken,
           type: 'redirect',
@@ -238,7 +238,7 @@ $(document).ready(function () {
         icon.toggleClass('icon-refresh icon-spinner icon-spin');
         WorldlineOP.el.iframePaymentMethodsList.html('');
         var data = {
-          controller: 'AdminWorldlineopAjax',
+          controller: 'AdminCawlopAjax',
           ajax: 1,
           token: worldlineopAjaxToken,
           type: 'iframe',
@@ -272,7 +272,7 @@ $(document).ready(function () {
           dataType: 'json',
           url: 'index.php',
           data: {
-            controller: 'AdminWorldlineopAjax',
+            controller: 'AdminCawlopAjax',
             ajax: 1,
             token: worldlineopAjaxToken,
             action: 'whatsNew'
@@ -297,7 +297,7 @@ $(document).ready(function () {
           dataType: 'json',
           url: 'index.php',
           data: {
-            controller: 'AdminWorldlineopAjax',
+            controller: 'AdminCawlopAjax',
             ajax: 1,
             token: worldlineopAjaxToken,
             action: 'hideWhatsNew'
@@ -316,7 +316,7 @@ $(document).ready(function () {
           dataType: 'json',
           url: 'index.php',
           data: {
-            controller: 'AdminWorldlineopAjax',
+            controller: 'AdminCawlopAjax',
             ajax: 1,
             token: worldlineopAjaxToken,
             action: 'resetModal'

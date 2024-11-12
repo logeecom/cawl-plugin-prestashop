@@ -24,7 +24,7 @@ use OnlinePayments\Sdk\Domain\CardSource;
 use OnlinePayments\Sdk\Domain\CreateHostedTokenizationRequest;
 use OnlinePayments\Sdk\ValidationException;
 use PrestaShop\PrestaShop\Core\Payment\PaymentOption;
-use Worldlineop;
+use Cawlop;
 use WorldlineOP\PrestaShop\Configuration\Entity\Settings;
 use WorldlineOP\PrestaShop\Repository\TokenRepository;
 use WorldlineOP\PrestaShop\Utils\Tools;
@@ -39,7 +39,7 @@ class PaymentOptionsPresenter implements PresenterInterface
     /** @var Settings */
     private $settings;
 
-    /** @var Worldlineop */
+    /** @var Cawlop */
     private $module;
 
     /** @var Context */
@@ -48,11 +48,11 @@ class PaymentOptionsPresenter implements PresenterInterface
     /**
      * ModuleConfigurationPresenter constructor.
      *
-     * @param Worldlineop $module
+     * @param Cawlop $module
      * @param Settings $settings
      * @param Context $context
      */
-    public function __construct(Worldlineop $module, Settings $settings, Context $context)
+    public function __construct(Cawlop $module, Settings $settings, Context $context)
     {
         $this->module = $module;
         $this->settings = $settings;
@@ -106,7 +106,7 @@ class PaymentOptionsPresenter implements PresenterInterface
     {
         $paymentMethodsSettings = $this->settings->paymentMethodsSettings;
         /** @var TokenRepository $tokenRepository */
-        $tokenRepository = $this->module->getService('worldlineop.repository.token');
+        $tokenRepository = $this->module->getService('cawlop.repository.token');
         /** @var \WorldlineopToken[] $tokens */
         $tokens = $tokenRepository->findByIdCustomerIdShop(
             $this->context->customer->id,
@@ -135,7 +135,7 @@ class PaymentOptionsPresenter implements PresenterInterface
         } else {
             $tokenIds = [];
             /** @var \OnlinePayments\Sdk\Merchant\MerchantClient $merchantClient */
-            $merchantClient = $this->module->getService('worldlineop.sdk.client');
+            $merchantClient = $this->module->getService('cawlop.sdk.client');
             $cartIsoLang = Language::getIsoById($this->context->cart->id_lang);
             foreach ($tokens as $token) {
                 $hostedTokenizationRequest = new CreateHostedTokenizationRequest();
@@ -251,7 +251,7 @@ class PaymentOptionsPresenter implements PresenterInterface
             return [];
         }
         /** @var \OnlinePayments\Sdk\Merchant\MerchantClient $merchantClient */
-        $merchantClient = $this->module->getService('worldlineop.sdk.client');
+        $merchantClient = $this->module->getService('cawlop.sdk.client');
         $cartIsoLang = Language::getIsoById($this->context->cart->id_lang);
         $hostedTokenizationRequest = new CreateHostedTokenizationRequest();
         $hostedTokenizationRequest->setAskConsumerConsent(true);

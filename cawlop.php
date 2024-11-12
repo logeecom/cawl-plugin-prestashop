@@ -1,6 +1,6 @@
 <?php
 /**
- * 2021 Worldline Online Payments
+ * 2021 Cawl Online Payments
  *
  * NOTICE OF LICENSE
  *
@@ -8,7 +8,7 @@
  * It is also available through the world-wide-web at this URL: https://opensource.org/licenses/AFL-3.0
  *
  * @author    PrestaShop partner
- * @copyright 2021 Worldline Online Payments
+ * @copyright 2021 Cawl Online Payments
  * @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 if (!defined('_PS_VERSION_')) {
@@ -19,9 +19,9 @@ use Monolog\Logger;
 use PrestaShop\ModuleLibServiceContainer\DependencyInjection\ServiceContainer;
 
 /**
- * Class Worldlineop
+ * Class Cawlop
  */
-class Worldlineop extends PaymentModule
+class Cawlop extends PaymentModule
 {
     /** @var string */
     public $theme;
@@ -33,29 +33,29 @@ class Worldlineop extends PaymentModule
     public $logger;
 
     /**
-     * Worldlineop constructor.
+     * Cawlop constructor.
      */
     public function __construct()
     {
         require_once dirname(__FILE__) . '/vendor/autoload.php';
 
-        $this->name = 'worldlineop';
-        $this->author = 'Worldline Online Payments';
-        $this->version = '1.4.2';
+        $this->name = 'cawlop';
+        $this->author = 'Cawl Online Payments';
+        $this->version = '1.0.0';
         $this->tab = 'payments_gateways';
-        $this->module_key = '089d13d0218de8085259e542483f4438';
+        // $this->module_key = '089d13d0218de8085259e542483f4438'; TODO: UPDATE MODULE KEY WHEN MODULE IS RELEASING
         $this->currencies = true;
         $this->currencies_mode = 'checkbox';
         parent::__construct();
         $this->bootstrap = true;
         $this->ps_versions_compliancy = array('min' => '1.7', 'max' => '1.7.8.99');
         // @formatter:off
-        $this->displayName = $this->l('Worldline Online Payments');
+        $this->displayName = $this->l('Cawl Online Payments');
         $this->description = $this->l('This module offers a 1-click integration to start accepting payments and grow your revenues by offering your customers with global and regional payment methods to sell across Europe.');
         // @formatter:on
         $this->theme = Tools::version_compare(_PS_VERSION_, '1.7.7', '>=') ? 'new-theme' : 'legacy';
         $this->serviceContainer = new ServiceContainer($this->name, $this->getLocalPath());
-        $this->logger = $this->getService('worldlineop.logger');
+        $this->logger = $this->getService('cawlop.logger');
     }
 
     /**
@@ -64,7 +64,7 @@ class Worldlineop extends PaymentModule
     public function install()
     {
         /** @var WorldlineOP\PrestaShop\Installer\Installer $installer */
-        $installer = $this->getService('worldlineop.installer');
+        $installer = $this->getService('cawlop.installer');
         if (false === parent::install()) {
             $installer->getLogger()->error('parent::install() returns false');
 
@@ -82,7 +82,7 @@ class Worldlineop extends PaymentModule
             }
         } catch (Exception $e) {
             $installer->getLogger()->error(sprintf('%s - File: %s - Line: %s - Trace: %s', $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTraceAsString()));
-            $this->_errors[] = $this->l('Worldline module could not be installed. Please check the logs inside the module "logs" directory.');
+            $this->_errors[] = $this->l('Cawl module could not be installed. Please check the logs inside the module "logs" directory.');
 
             return false;
         }
@@ -117,7 +117,7 @@ class Worldlineop extends PaymentModule
      */
     public function getContent()
     {
-        Tools::redirectAdmin(Context::getContext()->link->getAdminLink('AdminWorldlineopConfiguration'));
+        Tools::redirectAdmin(Context::getContext()->link->getAdminLink('AdminCawlopConfiguration'));
     }
 
     public function hookActionFrontControllerSetMedia()
@@ -128,7 +128,7 @@ class Worldlineop extends PaymentModule
             case 'order':
                 $this->context->controller->registerJavascript(
                     'worldineoc-js-sdk',
-                    'https://payment.preprod.direct.ingenico.com/hostedtokenization/js/client/tokenizer.min.js',
+                    'https://payment.preprod.ca.cawl-solutions.fr/hostedtokenization/js/client/tokenizer.min.js',
                     ['server' => 'remote', 'priority' => 1, 'position' => 'head', 'attribute' => 'defer']
                 );
                 $this->context->controller->registerStylesheet(
@@ -160,10 +160,10 @@ class Worldlineop extends PaymentModule
         if (Tools::getValue('controller') == 'AdminOrders') {
             Media::addJsDef([
                 'worldlineopAjaxTransactionUrl' => $this->context->link->getAdminLink(
-                    'AdminWorldlineopAjaxTransaction',
+                    'AdminCawlopAjaxTransaction',
                     true,
                     [],
-                    ['ajax' => 1, 'token' => Tools::getAdminTokenLite('AdminWorldlineopAjaxTransaction')]
+                    ['ajax' => 1, 'token' => Tools::getAdminTokenLite('AdminCawlopAjaxTransaction')]
                 ),
                 'worldlineopGenericErrorMessage' => $this->l('An error occurred while processing your request. Please try again.'),
                 'alertRefund' => $this->l('Do you confirm the refund of the funds?'),
@@ -171,7 +171,7 @@ class Worldlineop extends PaymentModule
                 'alertCancel' => $this->l('Do you confirm the cancellation of the transaction?'),
             ]);
         }
-        if (Tools::getValue('controller') == 'AdminWorldlineopConfiguration') {
+        if (Tools::getValue('controller') == 'AdminCawlopConfiguration') {
             $this->context->controller->addJS([
                 $this->getPathUri() . 'views/js/config.js',
                 $this->getPathUri() . 'views/js/jquery.custom-file-input.js',
@@ -186,7 +186,7 @@ class Worldlineop extends PaymentModule
     {
         try {
             /** @var \WorldlineOP\PrestaShop\Presenter\PaymentOptionsPresenter $paymentOptionsPresenter */
-            $paymentOptionsPresenter = $this->getService('worldlineop.payment.presenter');
+            $paymentOptionsPresenter = $this->getService('cawlop.payment.presenter');
         } catch (Exception $e) {
             $this->logger->error('Error while presenting payment options', ['message' => $e->getMessage()]);
 
@@ -247,9 +247,9 @@ class Worldlineop extends PaymentModule
         }
         try {
             /** @var \WorldlineOP\PrestaShop\Presenter\TransactionPresenter $transactionPresenter */
-            $transactionPresenter = $this->getService('worldlineop.transaction.presenter');
+            $transactionPresenter = $this->getService('cawlop.transaction.presenter');
             /** @var \WorldlineOP\PrestaShop\Presenter\ModuleConfigurationPresenter $settingsPresenter */
-            $settingsPresenter = $this->getService('worldlineop.settings.presenter');
+            $settingsPresenter = $this->getService('cawlop.settings.presenter');
 
             $this->context->smarty->assign([
                 'transactionData' => $transactionPresenter->present($idOrder),
@@ -324,7 +324,7 @@ class Worldlineop extends PaymentModule
             return '';
         }
         /** @var \WorldlineOP\PrestaShop\Repository\TransactionRepository $transactionRepository */
-        $transactionRepository = $this->getService('worldlineop.repository.transaction');
+        $transactionRepository = $this->getService('cawlop.repository.transaction');
         /** @var WorldlineopTransaction $transaction */
         $transaction = $transactionRepository->findByIdOrder($order->id);
         if (false === $transaction) {

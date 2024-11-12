@@ -3,10 +3,10 @@ imports:
 
 services:
 
-  worldlineop.transaction.presenter:
+  cawlop.transaction.presenter:
     class: 'WorldlineOP\PrestaShop\Presenter\TransactionPresenter'
     public: true
     arguments:
-      - '@worldlineop.module'
-      - '@worldlineop.repository.transaction'
-      - '@worldlineop.sdk.client'
+      - '@cawlop.module'
+      - '@cawlop.repository.transaction'
+      - '@cawlop.sdk.client'

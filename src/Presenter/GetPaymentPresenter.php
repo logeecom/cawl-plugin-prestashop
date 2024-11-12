@@ -30,7 +30,7 @@ use OnlinePayments\Sdk\Domain\RefundRequest;
 use OnlinePayments\Sdk\Merchant\Products\GetPaymentProductParams;
 use Order;
 use Validate;
-use Worldlineop;
+use Cawlop;
 use WorldlineOP\PrestaShop\Configuration\Loader\SettingsLoader;
 use WorldlineOP\PrestaShop\Logger\LoggerFactory;
 use WorldlineOP\PrestaShop\Repository\TransactionRepository;
@@ -53,7 +53,7 @@ class GetPaymentPresenter implements PresenterInterface
 
     const MAX_DELAY_BEFORE_REFUND = 7;
 
-    /** @var Worldlineop */
+    /** @var Cawlop */
     private $module;
 
     /** @var ClientFactory */
@@ -74,16 +74,16 @@ class GetPaymentPresenter implements PresenterInterface
     /**
      * GetPaymentPresenter constructor.
      *
-     * @param Worldlineop $module
+     * @param Cawlop $module
      * @param ClientFactory $merchantClientFactory
      * @param SettingsLoader $settingsLoader
      * @param LoggerFactory $loggerFactory
      */
     public function __construct(
-        Worldlineop $module,
-        ClientFactory $merchantClientFactory,
+        Cawlop         $module,
+        ClientFactory  $merchantClientFactory,
         SettingsLoader $settingsLoader,
-        LoggerFactory $loggerFactory
+        LoggerFactory  $loggerFactory
     ) {
         $this->module = $module;
         $this->merchantClientFactory = $merchantClientFactory;
@@ -185,7 +185,7 @@ class GetPaymentPresenter implements PresenterInterface
         $paymentProductParams->setCountryCode(
             Country::getIsoById((new Address($this->cart->id_address_invoice))->id_country)
         );
-        $paymentMethodText = $this->module->l('Worldline Online Payments', 'GetPaymentPresenter');
+        $paymentMethodText = $this->module->l('Cawl Online Payments', 'GetPaymentPresenter');
         try {
             $paymentProduct = $merchantClient->products()->getPaymentProduct($productId, $paymentProductParams);
             $paymentMethodText .= ' [' . $paymentProduct->getDisplayHints()->getLabel() . ']';
@@ -194,9 +194,9 @@ class GetPaymentPresenter implements PresenterInterface
         }
         $token = ['needSave' => false];
         /** @var \WorldlineOP\PrestaShop\Repository\HostedCheckoutRepository $hostedCheckoutRepository */
-        $hostedCheckoutRepository = $this->module->getService('worldlineop.repository.hosted_checkout');
+        $hostedCheckoutRepository = $this->module->getService('cawlop.repository.hosted_checkout');
         /** @var \WorldlineOP\PrestaShop\Repository\CreatedPaymentRepository $createdPaymentRepository */
-        $createdPaymentRepository = $this->module->getService('worldlineop.repository.created_payment');
+        $createdPaymentRepository = $this->module->getService('cawlop.repository.created_payment');
 
         /** @var HostedCheckout $hostedCheckout */
         $hostedCheckout = $hostedCheckoutRepository->findByMerchantReference($merchantReference);
@@ -256,7 +256,7 @@ class GetPaymentPresenter implements PresenterInterface
     {
         $merchantClient = $this->merchantClientFactory->getMerchant();
         /** @var TransactionRepository $transactionRepository */
-        $transactionRepository = $this->module->getService('worldlineop.repository.transaction');
+        $transactionRepository = $this->module->getService('cawlop.repository.transaction');
         /** @var \WorldlineopTransaction $transaction */
         $transaction = $transactionRepository->findByIdOrder($order->id);
         $merchantReference = strstr($paymentResponse->getId(), '_', true);
@@ -314,7 +314,7 @@ class GetPaymentPresenter implements PresenterInterface
             !in_array($paymentResponse->getStatus(), self::STATUS_PENDING)
         ) {
             /** @var TransactionRepository $transactionRepository */
-            $transactionRepository = $this->module->getService('worldlineop.repository.transaction');
+            $transactionRepository = $this->module->getService('cawlop.repository.transaction');
             /** @var \WorldlineopTransaction $transaction */
             $transaction = $transactionRepository->findByIdOrder($order->id);
             if (false === $transaction) {
@@ -382,7 +382,7 @@ class GetPaymentPresenter implements PresenterInterface
             if ($paymentSpecificOutput->getToken()) {
                 $this->logger->debug('Token field is not empty.');
                 /** @var \OnlinePayments\Sdk\Merchant\MerchantClient $merchantClient */
-                $merchantClient = $this->module->getService('worldlineop.sdk.client');
+                $merchantClient = $this->module->getService('cawlop.sdk.client');
                 try {
                     /** @var \OnlinePayments\Sdk\Domain\TokenResponse $tokenResponse */
                     $tokenResponse = $merchantClient->tokens()

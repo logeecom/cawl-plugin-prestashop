@@ -1,22 +1,22 @@
 services:
 
-  worldlineop.tab.manager:
+  cawlop.tab.manager:
     class: 'WorldlineOP\PrestaShop\Utils\TabManager'
     public: true
 
-  worldlineop.status.manager:
+  cawlop.status.manager:
     class: 'WorldlineOP\PrestaShop\Utils\OrderStatusManager'
     public: true
 
-  worldlineop.installer:
+  cawlop.installer:
     class: 'WorldlineOP\PrestaShop\Installer\Installer'
     public: true
     arguments:
-      - '@worldlineop.module'
-      - '@worldlineop.tab.manager'
-      - '@worldlineop.status.manager'
-      - '@worldlineop.settings.account.updater'
-      - '@worldlineop.settings.advanced_settings.updater'
-      - '@worldlineop.settings.payment_methods.updater'
+      - '@cawlop.module'
+      - '@cawlop.tab.manager'
+      - '@cawlop.status.manager'
+      - '@cawlop.settings.account.updater'
+      - '@cawlop.settings.advanced_settings.updater'
+      - '@cawlop.settings.payment_methods.updater'
       - !php/const _PS_VERSION_
-      - '@worldlineop.logger.factory'
+      - '@cawlop.logger.factory'

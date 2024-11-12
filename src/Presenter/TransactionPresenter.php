@@ -25,7 +25,7 @@ use OnlinePayments\Sdk\Domain\RefundMobileMethodSpecificOutput;
 use OnlinePayments\Sdk\Domain\RefundOutput;
 use OnlinePayments\Sdk\Domain\RefundRedirectMethodSpecificOutput;
 use OnlinePayments\Sdk\Merchant\MerchantClient;
-use Worldlineop;
+use Cawlop;
 use WorldlineOP\PrestaShop\Repository\TransactionRepository;
 use WorldlineOP\PrestaShop\Utils\Tools;
 
@@ -38,7 +38,7 @@ class TransactionPresenter implements PresenterInterface
     const STATUS_CAPTURE_REQUESTED = 'CAPTURE_REQUESTED';
     const STATUS_PAYMENT_CAPTURED = 'CAPTURED';
 
-    /** @var Worldlineop */
+    /** @var Cawlop */
     private $module;
 
     /** @var TransactionRepository */
@@ -48,9 +48,9 @@ class TransactionPresenter implements PresenterInterface
     private $merchantClient;
 
     public function __construct(
-        Worldlineop $module,
+        Cawlop                $module,
         TransactionRepository $transactionRepository,
-        MerchantClient $merchantClient
+        MerchantClient        $merchantClient
     ) {
         $this->module = $module;
         $this->transactionRepository = $transactionRepository;

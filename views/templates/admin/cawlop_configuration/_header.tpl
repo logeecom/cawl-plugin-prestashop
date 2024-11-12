@@ -16,16 +16,16 @@
   <div class="row">
     <div class="worldlineop-header flex col-xs-12">
       <div class="worldlineop-logo">
-        <img src="{$data.extra.path.img|escape:'html':'UTF-8'}worldline-horizontal.png"/>
+        <img src="{$data.extra.path.img|escape:'html':'UTF-8'}cawl-horizontal.png"/>
       </div>
       <div class="worldlineop-support flex">
         <div class="contact flex">
           <i class="icon icon-question-circle icon-big flex"></i>
           <div class="flex">
-            <p><b>{l s='Do you have a question?' mod='worldlineop'}</b></p>
-            <p>{l s='Contact us using' mod='worldlineop'}
+            <p><b>{l s='Do you have a question?' mod='cawlop'}</b></p>
+            <p>{l s='Contact us using' mod='cawlop'}
               <a target="_blank" href="https://addons.prestashop.com/en/contact-us?id_product=86428">
-                {l s='this link' mod='worldlineop'}
+                {l s='this link' mod='cawlop'}
               </a>
             </p>
           </div>
@@ -33,7 +33,7 @@
         <div class="cta-buttons flex">
           <a class="btn btn-primary" href="{$data.extra.path.module|escape:'html':'UTF-8'}readme_en.pdf">
             <i class="icon icon-book"></i>
-            {l s='Download User guide' mod='worldlineop'}
+            {l s='Download User guide' mod='cawlop'}
           </a>
         </div>
       </div>
