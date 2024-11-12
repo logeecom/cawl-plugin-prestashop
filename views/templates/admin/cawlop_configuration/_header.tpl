@@ -25,6 +25,7 @@
             <p><b>{l s='Do you have a question?' mod='cawlop'}</b></p>
             <p>{l s='Contact us using' mod='cawlop'}
               <a target="_blank" href="https://addons.prestashop.com/en/contact-us?id_product=86428">
+                <!-- TODO: Update id_product when the Cawl plugin has been released -->
                 {l s='this link' mod='cawlop'}
               </a>
             </p>
