@@ -101,7 +101,7 @@ configuration:
     displayWhatsNew: 0
   paymentMethodsSettings:
     displayGenericOption: 1
-    genericLogoFilename: 'worldlineop_symbol.svg'
+    genericLogoFilename: 'cawlop_symbol.png'
     redirectTemplateFilename: ''
     redirectCallToAction:
       fr: 'Payer avec Cawl Online Payments'

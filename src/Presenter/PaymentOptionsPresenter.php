@@ -221,7 +221,7 @@ class PaymentOptionsPresenter implements PresenterInterface
                 //@formatter:off
                 $paymentOption
                     ->setCallToActionText(sprintf($this->module->l('Pay with my previously saved card %s', 'PaymentOptionsPresenter'), $token->card_number))
-                    ->setAdditionalInformation($this->context->smarty->fetch('module:worldlineop/views/templates/front/hostedTokenizationAdditionalInformation_1click.tpl'))
+                    ->setAdditionalInformation($this->context->smarty->fetch('module:cawlop/views/templates/front/hostedTokenizationAdditionalInformation_1click.tpl'))
                     ->setBinary(true)
                     ->setModuleName('worldlineop-token-htp-' . $token->id_worldlineop_token);
                 //@formatter:on
@@ -282,7 +282,7 @@ class PaymentOptionsPresenter implements PresenterInterface
         $paymentOption = new PaymentOption();
         $paymentOption
             ->setCallToActionText(isset($cta[$cartIsoLang]) ? $cta[$cartIsoLang] : $cta[$defaultIsoLang])
-            ->setAdditionalInformation($this->context->smarty->fetch('module:worldlineop/views/templates/front/hostedTokenizationAdditionalInformation.tpl'))
+            ->setAdditionalInformation($this->context->smarty->fetch('module:cawlop/views/templates/front/hostedTokenizationAdditionalInformation.tpl'))
             ->setBinary(true)
             ->setLogo($this->module->getPathUri() . 'views/img/payment_logos/' . $this->settings->paymentMethodsSettings->iframeLogoFilename)
             ->setModuleName('worldlineop-htp');
@@ -305,7 +305,7 @@ class PaymentOptionsPresenter implements PresenterInterface
                     $this->settings->paymentMethodsSettings->genericLogoFilename
                 );
             } else {
-                $logo = $this->module->getPathUri() . 'views/img/payment_logos/worldlineop_symbol.svg';
+                $logo = $this->module->getPathUri() . 'views/img/payment_logos/cawlop_symbol.png';
             }
             $paymentOption = new PaymentOption();
             $paymentOption

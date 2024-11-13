@@ -16,7 +16,7 @@
   <div class="row">
     <div class="worldlineop-header flex col-xs-12">
       <div class="worldlineop-logo">
-        <img src="{$data.extra.path.img|escape:'html':'UTF-8'}cawl-horizontal.png"/>
+        <img src="{$data.extra.path.img|escape:'html':'UTF-8'}cawl-horizontal-logo.png"/>
       </div>
       <div class="worldlineop-support flex">
         <div class="contact flex">

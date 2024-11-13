@@ -14,7 +14,7 @@
 
 <div id="worldlineop-admin-order" class="card">
   <h3 class="card-header">
-    <img style="height: 22px;" src="{$settingsData.extra.path.img|escape:'htmlall':'UTF-8'}cawl-horizontal.png"/>
+    <img style="height: 22px;" src="{$settingsData.extra.path.img|escape:'htmlall':'UTF-8'}cawl-horizontal-logo.png"/>
     {l s='Cawl Online Payments' mod='cawlop'}
   </h3>
   <div class="card-body">
